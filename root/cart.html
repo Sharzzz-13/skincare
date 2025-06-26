@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart - Skin Genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Skin Genius</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Products</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="products-section">
+    <div class="container">
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+
+      <form id="checkout-form">
+        <h3>Shipping Address</h3>
+        <textarea name="address" required placeholder="Enter your full shipping address"></textarea>
+
+        <h3>Payment Method</h3>
+        <label><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label><br>
+        <label><input type="radio" name="payment" value="UPI"> UPI</label>
+
+        <br><br>
+        <button type="submit">Place Order</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Skin Genius. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

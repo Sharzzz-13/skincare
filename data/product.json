@@ -1,0 +1,79 @@
+[
+  {
+    "id": "p002",
+    "name": "Glow Facewash",
+    "price": 499,
+    "description": "Glow-boosting facewash with vitamin C.",
+    "image": "../images/skin2.jpg"
+  },
+  {
+    "id": "p003",
+    "name": "Cleanser",
+    "price": 399,
+    "description": "Gentle cleanser for daily use.",
+    "image": "../images/1.jpg"
+  },
+  {
+    "id": "p004",
+    "name": "Toner",
+    "price": 349,
+    "description": "Refreshing toner to balance skin pH.",
+    "image": "../images/2.jpg"
+  },
+  {
+    "id": "p005",
+    "name": "Serum",
+    "price": 899,
+    "description": "Concentrated serum for targeted care.",
+    "image": "../images/3.jpg"
+  },
+  {
+    "id": "p006",
+    "name": "Eye Cream",
+    "price": 699,
+    "description": "Reduces puffiness and dark circles.",
+    "image": "../images/4.jpg"
+  },
+  {
+    "id": "p007",
+    "name": "Exfoliator",
+    "price": 499,
+    "description": "Removes dead skin cells for a radiant glow.",
+    "image": "../images/5.jpg"
+  },
+  {
+    "id": "p008",
+    "name": "Face Mask",
+    "price": 599,
+    "description": "Nourishing mask for deep hydration.",
+    "image": "../images/6.jpg"
+  },
+  {
+    "id": "p009",
+    "name": "Moisturizer",
+    "price": 549,
+    "description": "Daily moisturizer for soft, supple skin.",
+    "image": "../images/7.jpg"
+  },
+  {
+    "id": "p010",
+    "name": "Face Oil",
+    "price": 799,
+    "description": "Lightweight oil for a healthy glow.",
+    "image": "../images/8.jpg"
+  },
+  {
+    "id": "p011",
+    "name": "Sunscreen",
+    "price": 399,
+    "description": "SPF 50 protection against UV rays.",
+    "image": "../images/9.jpg"
+  },
+  {
+    "id": "p012",
+    "name": "Lip Care",
+    "price": 199,
+    "description": "Hydrating balm for soft lips.",
+    "image": "../images/10.jpg"
+  }
+]

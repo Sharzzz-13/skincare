@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details | Skin Genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body>
+  <header class="animate__animated animate__fadeInDown">
+    <div class="container">
+      <h1>Skin Genius</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Products</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="products-section animate__animated animate__zoomIn">
+    <div class="container">
+      <div id="product-detail" class="product-detail"></div>
+      <button id="add-to-cart" class="animate__animated animate__pulse">Add to Cart</button>
+      <a href="cart.html" class="view-cart-btn">View Cart</a>
+    </div>
+  </section>
+
+  <footer class="animate__animated animate__fadeInUp">
+    <div class="container">
+      <p>&copy; 2024 Skin Genius. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script src="../js/product-detail.js"></script>
+  <script>
+    const form = document.getElementById('payment-form');
+    const msg = document.getElementById('payment-message');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        msg.style.display = 'block';
+        msg.classList.add('animate__fadeIn');
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>

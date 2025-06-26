@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skin Genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Skin Genius</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Welcome to Skin Genius</h2>
+      <p>Your one-stop solution for all skincare needs.</p>
+      <button id="learnMoreBtn">Learn More</button>
+    </div>
+  </section>
+
+  <section id="products" class="products-section">
+    <div class="container">
+      <h2>Our Products</h2>
+      <div id="product-list" class="product-list"></div>
+    </div>
+  </section>
+
+  <section id="video" class="video-section">
+    <div class="container">
+      <h2>How to Use Our Products</h2>
+      <div class="video-box">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/eEanU3wxMV4" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="morphing" class="morph-section">
+    <div class="container">
+      <h2>Real Results: Before & After</h2>
+      <div class="slider">
+        <div class="before"><img src="images/before.jpg" alt="Before"></div>
+        <div class="after"><img src="images/after.jpg" alt="After"></div>
+        <input type="range" min="0" max="100" value="50" class="slider-input" />
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>We are dedicated to providing the best skincare products that suit all skin types. Our mission is to bring out the natural beauty in everyone.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contactForm" action="https://formspree.io/f/mwpbwyvy" method="POST">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
+        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Skin Genius. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script src="../js/products.js"></script>
+  <script>
+    // Morphing slider logic
+    const sliderInput = document.querySelector('.slider-input');
+    const afterImage = document.querySelector('.slider .after');
+    if (sliderInput && afterImage) {
+      sliderInput.addEventListener('input', () => {
+        afterImage.style.width = sliderInput.value + "%";
+      });
+    }
+  </script>
+</body>
+</html>
