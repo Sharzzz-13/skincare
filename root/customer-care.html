@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Care - Skin Genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
+</head>
+<body>
+  <!-- Premium Header -->
+  <header>
+    <div class="container">
+      <h1>Skin Genius</h1>
+      <div class="header-buttons">
+        <button class="header-btn" onclick="window.location.href='index.html'">← Back</button>
+        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Customer Care Hero -->
+  <section class="hero" style="background-image: url('../images/skin3.jpg');">
+    <div class="hero-content">
+      <h2>Customer Care</h2>
+      <p>We're here to help you with any questions or concerns about your Skin Genius experience.</p>
+    </div>
+  </section>
+
+  <!-- Customer Care Content -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">📞</div>
+          <h3>Contact Us</h3>
+          <p>Our customer care team is available Monday to Friday, 9 AM - 6 PM IST. Reach out to us via email at skingenius@gmail.com or call us at +91 97315 87324.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💬</div>
+          <h3>Live Chat</h3>
+          <p>Get instant help with our live chat feature. Our skincare experts are ready to assist you with product recommendations and usage guidance.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">📧</div>
+          <h3>Email Support</h3>
+          <p>Send us a detailed message and we'll get back to you within 24 hours. Include your order number for faster assistance.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🎯</div>
+          <h3>Product Guidance</h3>
+          <p>Need help choosing the right products for your skin type? Our skincare specialists can create a personalized routine just for you.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🔧</div>
+          <h3>Technical Support</h3>
+          <p>Having issues with your account, orders, or website experience? Our technical team is here to resolve any platform-related concerns.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💝</div>
+          <h3>Loyalty Program</h3>
+          <p>Join our loyalty program to earn points on every purchase, get exclusive offers, and enjoy VIP customer care services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <p>Can't find what you're looking for? Send us a message and we'll help you right away.</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <select required>
+            <option value="">Select Inquiry Type</option>
+            <option value="product">Product Question</option>
+            <option value="order">Order Status</option>
+            <option value="return">Return/Refund</option>
+            <option value="technical">Technical Issue</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="How can we help you?" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Skin Genius</h3>
+          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="how-to-use.html">How to Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="customer-care.html">Customer Care</a></li>
+            <li><a href="shipping-info.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="javascript:void(0)" onclick="showComingSoon('Instagram')" aria-label="Instagram">📷</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('Facebook')" aria-label="Facebook">📘</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('Twitter')" aria-label="Twitter">🐦</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('YouTube')" aria-label="YouTube">📺</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Premium Menu Overlay -->
+  <div class="main-menu" id="mainMenu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="how-to-use.html">How to Use</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ul>
+  </div>
+
+  <!-- Premium Floating Elements -->
+  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
+  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+  <script src="../js/script.js"></script>
+  <script>
+    // Contact form submission
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+      this.reset();
+    });
+
+    // Social media coming soon function
+    function showComingSoon(platform) {
+      alert(`${platform} profile coming soon! Follow us for updates on skincare tips and exclusive offers.`);
+    }
+  </script>
+</body>
+</html> 

@@ -6,42 +6,233 @@
   <title>Contact | Skin Genius</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
 </head>
 <body>
 
+  <!-- Premium Header -->
   <header>
     <div class="container">
       <h1>Skin Genius</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="index.html#products">Products</a></li>
-          <li><a href="index.html#about">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="header-buttons">
+        <button class="header-btn" onclick="showAuthModal()">Sign In</button>
+        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+      </div>
     </div>
   </header>
 
-  <section class="contact-section">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>Have a question or suggestion? We'd love to hear from you!</p>
-      <form action="https://formspree.io/f/mwpbwyvy" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+  <!-- Contact Hero Section -->
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h2>Get in Touch</h2>
+      <p>We're here to help you on your skincare journey. Reach out to us anytime!</p>
     </div>
   </section>
 
+  <!-- Contact Content Section -->
+  <section class="contact-content-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <p>Have questions about our products or need personalized skincare advice? We're here to help you achieve your skin goals.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <h4>Email Us</h4>
+                <p>hello@skingenius.com</p>
+                <span>We'll respond within 24 hours</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">📱</div>
+              <div class="contact-details">
+                <h4>Call Us</h4>
+                <p>+91 98765 43210</p>
+                <span>Mon-Fri, 9 AM - 6 PM IST</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">💬</div>
+              <div class="contact-details">
+                <h4>Live Chat</h4>
+                <p>Available on our website</p>
+                <span>Instant support during business hours</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">📍</div>
+              <div class="contact-details">
+                <h4>Visit Us</h4>
+                <p>Skin Genius Studio</p>
+                <span>Mumbai, Maharashtra, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+          <div class="contact-form-card">
+            <h3>Send us a Message</h3>
+            <form action="https://formspree.io/f/mwpbwyvy" method="POST" class="contact-form">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a topic</option>
+                  <option value="product-inquiry">Product Inquiry</option>
+                  <option value="skincare-advice">Skincare Advice</option>
+                  <option value="order-support">Order Support</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">
+                <span>Send Message</span>
+                <span class="btn-icon">→</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>How do I choose the right products for my skin?</h4>
+          <p>We recommend starting with our skin quiz or booking a consultation. Our experts will analyze your skin type and concerns to create a personalized routine.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>What's your return policy?</h4>
+          <p>We offer a 30-day satisfaction guarantee. If you're not completely satisfied, we'll help you find the right products or process a full refund.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Are your products suitable for sensitive skin?</h4>
+          <p>Yes! All our products are formulated with sensitive skin in mind. We use gentle, non-irritating ingredients and conduct thorough testing.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>How long does shipping take?</h4>
+          <p>Standard shipping takes 3-5 business days. We also offer express shipping (1-2 days) and same-day delivery in select cities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2024 Skin Genius. All rights reserved.</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Skin Genius</h3>
+          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="how-to-use.html">How to Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Customer Care</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="YouTube">📺</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <!-- Premium Menu Overlay -->
+  <div class="main-menu" id="mainMenu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="how-to-use.html">How to Use</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ul>
+  </div>
+
+  <!-- Premium Auth Modal -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal-content">
+      <button class="close-auth" onclick="hideAuthModal()">&times;</button>
+      <div id="authForms">
+        <div id="loginForm">
+          <h3>Welcome Back</h3>
+          <input type="email" placeholder="Email" id="loginEmail" required>
+          <input type="password" placeholder="Password" id="loginPassword" required>
+          <button onclick="login()">Sign In</button>
+          <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign up</a></p>
+          <div class="auth-error" id="loginError"></div>
+        </div>
+        <div id="signupForm" class="hidden">
+          <h3>Join Skin Genius</h3>
+          <input type="text" placeholder="Full Name" id="signupName" required>
+          <input type="email" placeholder="Email" id="signupEmail" required>
+          <input type="password" placeholder="Password" id="signupPassword" required>
+          <button onclick="signup()">Create Account</button>
+          <p>Already have an account? <a href="#" onclick="showLoginForm()">Sign in</a></p>
+          <div class="auth-error" id="signupError"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Floating Elements -->
+  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
+  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+  <script src="../js/script.js"></script>
 </body>
 </html>

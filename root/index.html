@@ -3,96 +3,258 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skin Genius</title>
+  <title>Skin Genius - Luxury Skincare Collection</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
 </head>
 <body>
+  <!-- Premium Header -->
   <header>
     <div class="container">
       <h1>Skin Genius</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="cart.html">Cart</a></li>
-        </ul>
-      </nav>
+      <div class="header-buttons">
+        <button class="header-btn" onclick="showAuthModal()">Sign In</button>
+        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+      </div>
     </div>
   </header>
 
-  <section id="home" class="hero">
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: url('../images/11.jpg');">
     <div class="hero-content">
-      <h2>Welcome to Skin Genius</h2>
-      <p>Your one-stop solution for all skincare needs.</p>
-      <button id="learnMoreBtn">Learn More</button>
-    </div>
-  </section>
-
-  <section id="products" class="products-section">
-    <div class="container">
-      <h2>Our Products</h2>
-      <div id="product-list" class="product-list"></div>
-    </div>
-  </section>
-
-  <section id="video" class="video-section">
-    <div class="container">
-      <h2>How to Use Our Products</h2>
-      <div class="video-box">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/eEanU3wxMV4" frameborder="0" allowfullscreen></iframe>
+      <h2>Discover Your Skin's True Potential</h2>
+      <p>Premium skincare formulations that transform your complexion with every application. Experience the luxury of radiant, healthy skin.</p>
+      <div class="hero-buttons">
+        <a href="products.html" class="btn">Shop Collection</a>
+        <a href="about.html" class="btn btn-outline">Learn More</a>
       </div>
     </div>
   </section>
 
-  <section id="morphing" class="morph-section">
+  <!-- Premium Products Preview -->
+  <section class="products-section">
     <div class="container">
-      <h2>Real Results: Before & After</h2>
-      <div class="slider">
-        <div class="before"><img src="images/before.jpg" alt="Before"></div>
-        <div class="after"><img src="images/after.jpg" alt="After"></div>
-        <input type="range" min="0" max="100" value="50" class="slider-input" />
+      <h2>Our Signature Collection</h2>
+      <p>Discover our carefully curated range of luxury skincare essentials, each formulated to deliver visible results and elevate your daily routine.</p>
+      <div class="product-list" id="featured-products">
+        <!-- Products will be loaded dynamically -->
+      </div>
+      <div class="text-center mt-2">
+        <a href="products.html" class="btn">View All Products</a>
       </div>
     </div>
   </section>
 
-  <section id="about" class="about-section">
+  <!-- Luxury About Preview -->
+  <section class="about-section">
     <div class="container">
-      <h2>About Us</h2>
-      <p>We are dedicated to providing the best skincare products that suit all skin types. Our mission is to bring out the natural beauty in everyone.</p>
+      <h2>The Skin Genius Philosophy</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">✨</div>
+          <h3>Premium Ingredients</h3>
+          <p>We source only the finest, clinically-proven ingredients from around the world, ensuring every product meets our exacting standards for quality and efficacy.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🧬</div>
+          <h3>Science-Backed Formulas</h3>
+          <p>Our formulations are developed by leading dermatologists and cosmetic chemists, combining cutting-edge science with nature's most powerful ingredients.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🌱</div>
+          <h3>Sustainable Luxury</h3>
+          <p>We believe luxury should never compromise our planet. Our products are cruelty-free, sustainably packaged, and environmentally conscious.</p>
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <a href="about.html" class="btn">Learn More</a>
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="contact-section">
+  <!-- Premium Testimonials -->
+  <section class="testimonials-section">
     <div class="container">
-      <h2>Contact Us</h2>
-      <form id="contactForm" action="https://formspree.io/f/mwpbwyvy" method="POST">
-        <input type="text" id="name" name="name" placeholder="Your Name" required />
-        <input type="email" id="email" name="email" placeholder="Your Email" required />
-        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+      <h2>What Our Community Says</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"Skin Genius transformed my skincare routine. The results are incredible - my skin has never looked more radiant and healthy."</p>
+          <div class="testimonial-author">- Sarah M., Verified Customer</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"Finally found products that actually work! The quality is exceptional and the customer service is unmatched."</p>
+          <div class="testimonial-author">- Emma L., Beauty Influencer</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"The attention to detail in every product is remarkable. You can feel the luxury in every application."</p>
+          <div class="testimonial-author">- Dr. Jessica K., Dermatologist</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Results Section -->
+  <section class="results-section">
+    <div class="container">
+      <h2>Real Results, Real Stories</h2>
+      <p>See the transformative power of our products through real customer journeys and clinical studies.</p>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-image" style="background-image: url('../images/e.jpg'); background-size: cover; background-position: center; height: 250px; border-radius: 15px 15px 0 0;"></div>
+          <h3>12-Week Transformation</h3>
+          <p>Visible improvement in skin texture, tone, and overall radiance with consistent use of our signature collection.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-image" style="background-image: url('../images/q.jpg'); background-size: cover; background-position: center; height: 250px; border-radius: 15px 15px 0 0;"></div>
+          <h3>Clinically Proven</h3>
+          <p>Independent studies show 94% of participants experienced significant improvement in skin hydration and elasticity.</p>
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <a href="results.html" class="btn">View All Results</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Newsletter -->
+  <section class="newsletter-section">
+    <div class="container">
+      <h2>Join the Skin Genius Community</h2>
+      <p>Be the first to discover new products, exclusive offers, and expert skincare tips delivered to your inbox.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
       </form>
     </div>
   </section>
 
+  <!-- Luxury Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2024 Skin Genius. All rights reserved.</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Skin Genius</h3>
+          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="how-to-use.html">How to Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="customer-care.html">Customer Care</a></li>
+            <li><a href="shipping-info.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="javascript:void(0)" onclick="showComingSoon('Instagram')" aria-label="Instagram">📷</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('Facebook')" aria-label="Facebook">📘</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('Twitter')" aria-label="Twitter">🐦</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('YouTube')" aria-label="YouTube">📺</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+      </div>
     </div>
   </footer>
 
+  <!-- Premium Menu Overlay -->
+  <div class="main-menu" id="mainMenu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="how-to-use.html">How to Use</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ul>
+  </div>
+
+  <!-- Premium Auth Modal -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal-content">
+      <button class="close-auth" onclick="hideAuthModal()">&times;</button>
+      <div id="authForms">
+        <div id="loginForm">
+          <h3>Welcome Back</h3>
+          <input type="email" placeholder="Email" id="loginEmail" required>
+          <input type="password" placeholder="Password" id="loginPassword" required>
+          <button onclick="login()">Sign In</button>
+          <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign up</a></p>
+          <div class="auth-error" id="loginError"></div>
+        </div>
+        <div id="signupForm" style="display: none;">
+          <h3>Create Account</h3>
+          <input type="text" placeholder="Full Name" id="signupName" required>
+          <input type="email" placeholder="Email" id="signupEmail" required>
+          <input type="password" placeholder="Password" id="signupPassword" required>
+          <button onclick="signup()">Sign Up</button>
+          <p>Already have an account? <a href="#" onclick="showLoginForm()">Sign in</a></p>
+          <div class="auth-error" id="signupError"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer Banner -->
+  <div class="disclaimer-banner">
+    <p>⚠️ <strong>LEARNING PROJECT:</strong> This is a portfolio website created for educational purposes. Not a real business. All products, prices, and functionality are simulated.</p>
+  </div>
+
+  <!-- Premium Floating Elements -->
+  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
+  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
   <script src="../js/script.js"></script>
-  <script src="../js/products.js"></script>
   <script>
-    // Morphing slider logic
-    const sliderInput = document.querySelector('.slider-input');
-    const afterImage = document.querySelector('.slider .after');
-    if (sliderInput && afterImage) {
-      sliderInput.addEventListener('input', () => {
-        afterImage.style.width = sliderInput.value + "%";
-      });
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      setupScrollEffects();
+    });
+
+    // Add to cart function
+    function addToCart(productId, button) {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart.push(productId);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      
+      const originalText = button.textContent;
+      button.textContent = "Added! ✓";
+      button.style.background = "var(--sage)";
+      
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.style.background = "";
+      }, 1500);
+    }
+
+    // Newsletter subscription
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      alert('Thank you for subscribing to Skin Genius! You\'ll receive our latest updates and exclusive offers.');
+      this.reset();
+    });
+
+    // Social media coming soon function
+    function showComingSoon(platform) {
+      alert(`${platform} profile coming soon! Follow us for updates on skincare tips and exclusive offers.`);
     }
   </script>
 </body>

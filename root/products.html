@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Collection - Skin Genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Main Menu -->
+  <div class="main-menu" id="mainMenu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="how-to-use.html">How to Use</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ul>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="back-btn">← Back</a>
+      <h1>Skin Genius</h1>
+      <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    </div>
+  </nav>
+
+  <!-- Premium Header -->
+  <header>
+    <div class="container">
+      <h1>Skin Genius</h1>
+      <div class="header-buttons">
+        <button class="header-btn" onclick="showAuthModal()">Sign In</button>
+        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Luxury Products Hero -->
+  <section class="products-hero" style="background-image: url('../images/13.jpg');">
+    <div class="container">
+      <div class="products-hero-content">
+        <h2>Our Signature Collection</h2>
+        <p>Discover our carefully curated range of luxury skincare essentials, each formulated to deliver visible results and elevate your daily routine. From gentle cleansers to potent serums, every product is crafted with the finest ingredients and backed by science.</p>
+        <div class="products-stats">
+          <div class="stat">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Premium Products</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Customer Satisfaction</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Expert Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Products Grid -->
+  <section class="products-section">
+    <div class="container">
+      <div class="products-header">
+        <h3>Shop Our Collection</h3>
+        <p>Each product is designed to work harmoniously with your skin, delivering transformative results you can see and feel.</p>
+      </div>
+      <div class="product-list" id="product-list">
+        <!-- Products will be loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Product Categories -->
+  <section class="categories-section">
+    <div class="container">
+      <h3>Shop by Category</h3>
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-icon">🧴</div>
+          <h4>Cleansers</h4>
+          <p>Gentle yet effective formulas that remove impurities without stripping your skin's natural moisture.</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">💧</div>
+          <h4>Serums</h4>
+          <p>Concentrated treatments that target specific concerns and deliver powerful active ingredients.</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">🧴</div>
+          <h4>Moisturizers</h4>
+          <p>Hydrating formulas that lock in moisture and create a protective barrier for your skin.</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">🛡️</div>
+          <h4>Sunscreen</h4>
+          <p>Broad-spectrum protection that shields your skin from harmful UV rays while feeling weightless.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h3>What Our Customers Say</h3>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"The Vitamin C serum has completely transformed my skin. I've never received so many compliments on my complexion!"</p>
+          <div class="testimonial-author">- Maria S., Verified Customer</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"Finally found a cleanser that doesn't leave my skin feeling tight. The gentle formula is perfect for my sensitive skin."</p>
+          <div class="testimonial-author">- Jennifer L., Beauty Blogger</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"The retinol cream has reduced my fine lines significantly. I can't believe the results in just 4 weeks!"</p>
+          <div class="testimonial-author">- Dr. Amanda K., Dermatologist</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Newsletter -->
+  <section class="newsletter-section">
+    <div class="container">
+      <h2>Stay Updated</h2>
+      <p>Be the first to know about new products, exclusive offers, and expert skincare tips.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Skin Genius</h3>
+          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Customer Care</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="YouTube">📺</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Premium Auth Modal -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal-content">
+      <button class="close-auth" onclick="hideAuthModal()">&times;</button>
+      <div id="authForms">
+        <div id="loginForm">
+          <h3>Welcome Back</h3>
+          <input type="email" placeholder="Email" id="loginEmail" required>
+          <input type="password" placeholder="Password" id="loginPassword" required>
+          <button onclick="login()">Sign In</button>
+          <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign up</a></p>
+          <div class="auth-error" id="loginError"></div>
+        </div>
+        <div id="signupForm" class="hidden">
+          <h3>Join Skin Genius</h3>
+          <input type="text" placeholder="Full Name" id="signupName" required>
+          <input type="email" placeholder="Email" id="signupEmail" required>
+          <input type="password" placeholder="Password" id="signupPassword" required>
+          <button onclick="signup()">Create Account</button>
+          <p>Already have an account? <a href="#" onclick="showLoginForm()">Sign in</a></p>
+          <div class="auth-error" id="signupError"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Floating Elements -->
+  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
+  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+  <script src="../js/products.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html> 

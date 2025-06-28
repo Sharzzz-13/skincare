@@ -3,33 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cart - Skin Genius</title>
+  <title>About Us - Skin Genius</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
 </head>
 <body>
-  <!-- Main Menu -->
-  <div class="main-menu" id="mainMenu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="how-to-use.html">How to Use</a></li>
-      <li><a href="results.html">Results</a></li>
-    </ul>
-  </div>
-
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <a href="index.html" class="back-btn">← Back</a>
-      <h1>Skin Genius</h1>
-      <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    </div>
-  </nav>
-
   <!-- Premium Header -->
   <header>
     <div class="container">
@@ -41,70 +20,49 @@
     </div>
   </header>
 
-  <!-- Premium Cart Section -->
-  <section class="products-section">
+  <!-- Hero About Section -->
+  <section class="about-hero" style="background-image: url('../images/12.jpg');">
+    <div class="about-hero-content">
+      <h2>Our Story</h2>
+      <p>Where science meets beauty, and every product tells a story of transformation.</p>
+    </div>
+  </section>
+
+  <!-- About Content Section -->
+  <section class="about-content-section">
     <div class="container">
-      <h2>Your Shopping Cart</h2>
-      <p>Review your selections and complete your purchase with our secure checkout process.</p>
-      
-      <div class="cart-container">
-        <div class="cart-items" id="cart-items">
-          <!-- Cart items will be loaded here -->
+      <div class="about-intro">
+        <h3>The Skin Genius Philosophy</h3>
+        <p>At <strong>Skin Genius</strong>, we believe skincare is self-care. Our journey began with a simple idea: to create gentle, effective, and joyful products for every skin type. We blend science and nature to bring out your natural glow—because everyone deserves to feel confident in their own skin.</p>
+      </div>
+
+      <div class="about-values">
+        <div class="value-card">
+          <div class="value-icon">🌿</div>
+          <h4>Natural Ingredients</h4>
+          <p>We use safe, skin-loving ingredients—no harsh chemicals, ever. Every formula is crafted with nature's finest botanicals.</p>
         </div>
-        
-        <div class="cart-summary">
-          <h3>Order Summary</h3>
-          <div class="summary-item">
-            <span>Subtotal:</span>
-            <span id="subtotal">₹0</span>
-          </div>
-          <div class="summary-item">
-            <span>Packing & Delivery:</span>
-            <span id="delivery-charge">₹50</span>
-          </div>
-          <div class="summary-item total">
-            <span>Total:</span>
-            <span id="total">₹50</span>
-          </div>
+        <div class="value-card">
+          <div class="value-icon">🐰</div>
+          <h4>Cruelty-Free</h4>
+          <p>Our products are never tested on animals. Kindness is at our core, extending to all living beings.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">✨</div>
+          <h4>For Every Skin</h4>
+          <p>We celebrate diversity and create formulas for all skin tones and types. Beauty knows no boundaries.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🧬</div>
+          <h4>Science-Backed</h4>
+          <p>Every formula is developed with leading dermatologists and backed by clinical research for proven results.</p>
         </div>
       </div>
 
-      <form id="checkout-form" class="checkout-form">
-        <div class="checkout-section">
-          <h3>📦 Shipping Address</h3>
-          <textarea name="address" required placeholder="Enter your full shipping address including PIN code"></textarea>
-        </div>
-
-        <div class="checkout-section">
-          <h3>💳 Payment Method</h3>
-          <div class="payment-options">
-            <label class="payment-option">
-              <input type="radio" name="payment" value="Cash on Delivery" checked>
-              <span class="payment-label">💵 Cash on Delivery</span>
-            </label>
-            <label class="payment-option">
-              <input type="radio" name="payment" value="UPI">
-              <span class="payment-label">📱 UPI Payment</span>
-            </label>
-            <label class="payment-option">
-              <input type="radio" name="payment" value="Credit Card">
-              <span class="payment-label">💳 Credit/Debit Card</span>
-            </label>
-            <label class="payment-option">
-              <input type="radio" name="payment" value="Net Banking">
-              <span class="payment-label">🏦 Net Banking</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="checkout-section">
-          <h3>📞 Contact Information</h3>
-          <input type="tel" name="phone" required placeholder="Phone Number" pattern="[0-9]{10}">
-          <input type="email" name="email" placeholder="Email (optional)">
-        </div>
-
-        <button type="submit" class="btn checkout-btn">Place Order</button>
-      </form>
+      <div class="about-team">
+        <h3>Meet Our Team</h3>
+        <p>We're a small, passionate group of skincare lovers, scientists, and dreamers. Our mission is to make you feel beautiful, inside and out. Thank you for being part of our story! 💖</p>
+      </div>
     </div>
   </section>
 
@@ -150,6 +108,18 @@
     </div>
   </footer>
 
+  <!-- Premium Menu Overlay -->
+  <div class="main-menu" id="mainMenu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="how-to-use.html">How to Use</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ul>
+  </div>
+
   <!-- Premium Auth Modal -->
   <div class="auth-modal" id="authModal">
     <div class="auth-modal-content">
@@ -180,8 +150,6 @@
   <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
   <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
 
-  <!-- Scripts -->
-  <script src="../js/cart.js"></script>
   <script src="../js/script.js"></script>
 </body>
-</html>
+</html> 

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results - Skin Genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <button id="backBtn" class="header-btn back-btn">← Back</button>
+      <h1>Skin Genius</h1>
+      <button class="header-btn" onclick="toggleMenu()">Menu</button>
+    </div>
+  </header>
+
+  <section class="morph-section">
+    <div class="container">
+      <h2>Real Results: Before & After</h2>
+      <div class="slider">
+        <div class="before"><img src="../images/before.jpg" alt="Before"></div>
+        <div class="after"><img src="../images/after.jpg" alt="After"></div>
+        <input type="range" min="0" max="100" value="50" class="slider-input" />
+      </div>
+      <div style="max-width:800px;margin:30px auto;text-align:center;">
+        <h3 style="color:#ff8c94;margin-bottom:20px;">Customer Success Stories</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:30px;">
+          <div style="background:#fff0f2;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(255,140,148,0.08);">
+            <h4 style="color:#ff8c94;margin-bottom:10px;">Sarah's Transformation</h4>
+            <p>"After 3 months of using Skin Genius products, my acne scars have significantly faded and my skin texture has improved dramatically. I feel so much more confident!"</p>
+            <div style="color:#ff8c94;font-weight:600;margin-top:10px;">— Sarah, 24</div>
+          </div>
+          <div style="background:#fff0f2;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(255,140,148,0.08);">
+            <h4 style="color:#ff8c94;margin-bottom:10px;">Priya's Glow Journey</h4>
+            <p>"The combination of cleanser, serum, and moisturizer has given me the natural glow I've always wanted. My friends keep asking what I'm doing differently!"</p>
+            <div style="color:#ff8c94;font-weight:600;margin-top:10px;">— Priya, 28</div>
+          </div>
+          <div style="background:#fff0f2;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(255,140,148,0.08);">
+            <h4 style="color:#ff8c94;margin-bottom:10px;">Aisha's Anti-Aging Results</h4>
+            <p>"At 35, I was worried about fine lines. The eye cream and face oil have made such a difference. My skin looks younger and more radiant than ever."</p>
+            <div style="color:#ff8c94;font-weight:600;margin-top:10px;">— Aisha, 35</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <button id="backToTopBtn" title="Back to Top" style="display:none;">↑</button>
+
+  <!-- Floating Menu -->
+  <div class="main-menu" id="mainMenu">
+    <button class="close-menu" onclick="toggleMenu()">×</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="how-to-use.html">How to Use</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Skin Genius. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script>
+    // Morphing slider logic
+    const sliderInput = document.querySelector('.slider-input');
+    const afterImage = document.querySelector('.slider .after');
+    if (sliderInput && afterImage) {
+      sliderInput.addEventListener('input', () => {
+        afterImage.style.width = sliderInput.value + "%";
+      });
+    }
+
+    // Back button functionality
+    const backBtn = document.getElementById('backBtn');
+    backBtn.onclick = () => {
+      window.location.href = 'index.html';
+    };
+  </script>
+</body>
+</html> 
