@@ -43,10 +43,206 @@ document.addEventListener('DOMContentLoaded', function() {
         signupForm.style.display = '';
         signinForm.style.display = 'none';
       });
-      // Prevent form submission (demo only)
-      signinForm.addEventListener('submit', function(e) { e.preventDefault(); alert('Sign in (demo)'); });
-      signupForm.addEventListener('submit', function(e) { e.preventDefault(); alert('Sign up (demo)'); });
     }
+
+    // Cart drawer open/close logic
+    const openCartBtn = document.getElementById('open-cart');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartDrawerContent = document.querySelector('.cart-drawer-content');
+    if (openCartBtn && closeCartBtn && cartDrawer) {
+      openCartBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        cartDrawer.classList.add('open');
+        document.body.classList.add('cart-open');
+        if (typeof renderCartDrawer === 'function') renderCartDrawer();
+        if (typeof attachCheckoutButtonHandler === 'function') attachCheckoutButtonHandler();
+      });
+      closeCartBtn.addEventListener('click', function() {
+        cartDrawer.classList.remove('open');
+        document.body.classList.remove('cart-open');
+      });
+      // Prevent cart drawer from closing when clicking inside the drawer content
+      if (cartDrawerContent) {
+        cartDrawerContent.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+      window.addEventListener('click', function(e) {
+        if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && e.target !== openCartBtn) {
+          cartDrawer.classList.remove('open');
+          document.body.classList.remove('cart-open');
+        }
+      });
+    }
+
+    // Minimal checkout modal logic
+    function attachCheckoutButtonHandler() {
+      const checkoutBtn = document.querySelector('.cart-drawer-footer .btn.rhode-btn');
+      if (!checkoutBtn) return;
+      const checkoutModal = document.getElementById('checkout-modal');
+      const closeCheckoutBtn = document.getElementById('close-checkout');
+      const checkoutSummary = document.getElementById('checkout-summary');
+      const placeOrderBtn = document.getElementById('place-order-btn');
+      // Remove previous event listeners (if any)
+      checkoutBtn.onclick = null;
+      closeCheckoutBtn.onclick = null;
+      placeOrderBtn.onclick = null;
+      // Open checkout modal
+      checkoutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const user = getCurrentUser && getCurrentUser();
+        if (!user) {
+          // Not signed in: open account modal and show message
+          document.getElementById('account-modal').classList.add('open');
+          setTimeout(() => {
+            const info = document.getElementById('account-user-info');
+            if (info) info.innerHTML = '<div style="color:#7a5a3a;margin-bottom:1em;">please sign in to checkout</div>' + info.innerHTML;
+          }, 100);
+          return;
+        }
+        renderCheckoutSummary();
+        checkoutModal.style.display = 'flex';
+        cartDrawer.classList.remove('open');
+        document.body.classList.remove('cart-open');
+      });
+      // Close checkout modal
+      closeCheckoutBtn.addEventListener('click', function() {
+        checkoutModal.style.display = 'none';
+      });
+      // Render order summary with address picker
+      window.renderCheckoutSummary = function() {
+        const user = getCurrentUser && getCurrentUser();
+        if (!user) return;
+        fetchAddresses(function(addresses) {
+          const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          if (!cart.length) {
+            checkoutSummary.innerHTML = '<p>Your bag is empty.</p>';
+            return;
+          }
+          const counts = {};
+          cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
+          let html = '<ul style="list-style:none;padding:0;">';
+          let subtotal = 0;
+          Object.entries(counts).forEach(([id, qty]) => {
+            const item = window.productData.find(p => p.id === id);
+            if (!item) return;
+            const itemTotal = item.price * qty;
+            subtotal += itemTotal;
+            html += `<li style="margin-bottom:0.7em;">${item.name} × ${qty} <span style="float:right;">₹${itemTotal}</span></li>`;
+          });
+          // Shipping calculation
+          let shipping = subtotal >= 2000 ? 0 : 99;
+          html += `</ul><div style="margin-top:1em;font-weight:500;">Subtotal: ₹${subtotal}</div>`;
+          html += `<div style="margin-top:0.3em;font-weight:500;">Shipping: ${shipping === 0 ? 'Free' : '₹' + shipping}</div>`;
+          html += `<div style="margin-top:0.7em;font-weight:600;font-size:1.1em;">Total: ₹${subtotal + shipping}</div>`;
+          // Address picker
+          html += '<div style="margin:1.5em 0 0.5em;font-weight:500;">shipping address</div>';
+          if (addresses.length) {
+            html += '<select id="address-picker" style="width:100%;padding:0.5em 0.7em;margin-bottom:1em;">';
+            addresses.forEach((addr, i) => {
+              html += `<option value="${addr.id}">${addr.label || addr.line1 + ', ' + addr.city}</option>`;
+            });
+            html += '</select>';
+          } else {
+            html += '<div style="color:#b7a99a;margin-bottom:1em;">no addresses saved</div>';
+          }
+          // Payment method dropdown
+          html += '<div style="margin:1.5em 0 0.5em;font-weight:500;">payment method</div>';
+          html += '<select id="payment-method-picker" style="width:100%;padding:0.5em 0.7em;margin-bottom:1em;">';
+          html += '<option value="Credit Card">Credit Card</option>';
+          html += '<option value="UPI">UPI</option>';
+          html += '<option value="COD">Cash on Delivery</option>';
+          html += '</select>';
+          html += '<button id="add-address-btn" class="btn rhode-btn" style="width:100%;margin-bottom:1em;">add new address</button>';
+          checkoutSummary.innerHTML = html;
+          document.getElementById('add-address-btn').onclick = function() {
+            showAddressForm();
+          };
+        });
+      }
+      // Show address form and add via backend
+      function showAddressForm() {
+        const formHtml = `
+          <form id="address-form" style="margin:1em 0 0.5em;">
+            <input type="text" placeholder="Label (e.g. Home, Work)" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="Address Line 1" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="City" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="State" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="Pincode" style="width:100%;margin-bottom:0.7em;" required />
+            <button type="submit" class="btn rhode-btn" style="width:100%;">save address</button>
+          </form>
+        `;
+        checkoutSummary.innerHTML += formHtml;
+        const form = document.getElementById('address-form');
+        form.onsubmit = function(e) {
+          e.preventDefault();
+          const [label, line1, city, state, pincode] = Array.from(form.querySelectorAll('input')).map(i => i.value.trim());
+          addAddress({ label, line1, city, state, pincode }, function() {
+            renderCheckoutSummary();
+          });
+        };
+      }
+      // Place order using backend
+      placeOrderBtn.addEventListener('click', function() {
+        const user = getCurrentUser && getCurrentUser();
+        if (!user) {
+          document.getElementById('account-modal').classList.add('open');
+          return;
+        }
+        const picker = document.getElementById('address-picker');
+        const address_id = picker ? picker.value : null;
+        if (!address_id) {
+          alert('Please add and select an address to place your order.');
+          return;
+        }
+        const paymentPicker = document.getElementById('payment-method-picker');
+        const payment_method = paymentPicker ? paymentPicker.value : 'Demo Payment';
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (!cart.length) return;
+        const counts = {};
+        cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
+        const items = [];
+        let total = 0;
+        Object.entries(counts).forEach(([id, qty]) => {
+          const item = window.productData.find(p => p.id === id);
+          if (!item) return;
+          const itemTotal = item.price * qty;
+          total += itemTotal;
+          items.push({ id, name: item.name, qty, total: itemTotal });
+        });
+        // Demo: Save order to localStorage (or send to backend if ready)
+        const orderNumber = Math.floor(100000 + Math.random() * 900000);
+        const date = new Date().toLocaleString();
+        const order = { orderNumber, date, items, total, address_id, payment_method };
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        localStorage.removeItem('cart');
+        if (window.renderCartDrawer) renderCartDrawer();
+        if (window.renderProductQtyControls) renderProductQtyControls();
+        window.location.href = 'thankyou.html?order=' + orderNumber;
+      });
+    }
+    window.attachCheckoutButtonHandler = attachCheckoutButtonHandler;
+
+    // Patch cart functions to also update product controls and checkout button
+    if (window.addToCart) {
+      const _origAddToCart = window.addToCart;
+      window.addToCart = function(pid) { _origAddToCart(pid); if (window.renderProductQtyControls) renderProductQtyControls(); if (window.renderCartDrawerAndAttachCheckout) renderCartDrawerAndAttachCheckout(); };
+    }
+    if (window.updateCartQuantity) {
+      const _origUpdateCartQuantity = window.updateCartQuantity;
+      window.updateCartQuantity = function(pid, ch) { _origUpdateCartQuantity(pid, ch); if (window.renderProductQtyControls) renderProductQtyControls(); if (window.renderCartDrawerAndAttachCheckout) renderCartDrawerAndAttachCheckout(); };
+    }
+    window.renderCartDrawerAndAttachCheckout = function() {
+      if (window.renderCartDrawer) renderCartDrawer();
+      if (window.attachCheckoutButtonHandler) attachCheckoutButtonHandler();
+    };
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.renderProductQtyControls) renderProductQtyControls();
+      if (window.renderCartDrawerAndAttachCheckout) renderCartDrawerAndAttachCheckout();
+    });
 });
 
 // Initialize the application

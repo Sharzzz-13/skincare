@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – skin genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { background: #f7f3ef; font-family: 'Inter', sans-serif; }
+    .admin-container { max-width: 900px; margin: 3em auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.07); padding: 2.5em 2em 2em; }
+    .admin-title { font-family: 'Playfair Display', serif; font-size: 2em; color: #7a5a3a; margin-bottom: 0.5em; }
+    .admin-section { margin-top: 2.5em; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+    th, td { padding: 0.7em 0.5em; border-bottom: 1px solid #eee; text-align: left; }
+    th { color: #7a5a3a; font-weight: 600; font-size: 1.05em; }
+    td { font-size: 0.98em; }
+    .admin-login { max-width: 340px; margin: 5em auto 0; background: #fff; border-radius: 10px; box-shadow: 0 2px 16px rgba(0,0,0,0.04); padding: 2em 2em 1.5em; }
+    .admin-login input { width: 100%; margin-bottom: 1em; padding: 0.7em 1em; border: 1.5px solid #e5ded7; border-radius: 7px; font-size: 1em; }
+    .admin-login button { width: 100%; padding: 0.7em 1em; background: #7a5a3a; color: #fff; border: none; border-radius: 7px; font-size: 1.05em; cursor: pointer; }
+    .admin-logout { float: right; margin-top: -2.5em; }
+  </style>
+</head>
+<body>
+  <div id="admin-login" class="admin-login">
+    <h2 style="text-align:center;color:#7a5a3a;font-family:'Playfair Display',serif;">admin login</h2>
+    <input id="admin-email" type="email" placeholder="Admin Email" required />
+    <input id="admin-password" type="password" placeholder="Password" required />
+    <button id="admin-login-btn">sign in</button>
+    <div id="admin-login-error" style="color:#b74a3a;text-align:center;margin-top:1em;"></div>
+  </div>
+  <div id="admin-dashboard" class="admin-container" style="display:none;">
+    <div class="admin-title">admin dashboard <button class="admin-logout btn rhode-btn" onclick="adminLogout()">sign out</button></div>
+    <div class="admin-section">
+      <h3>users</h3>
+      <table id="users-table">
+        <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Admin?</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="admin-section">
+      <h3>orders</h3>
+      <table id="orders-table">
+        <thead><tr><th>ID</th><th>User</th><th>Email</th><th>Items</th><th>Total</th><th>Address</th><th>Date</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    function adminLogout() {
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('admin_name');
+      localStorage.removeItem('admin_email');
+      localStorage.removeItem('admin_is_admin');
+      document.getElementById('admin-dashboard').style.display = 'none';
+      document.getElementById('admin-login').style.display = '';
+    }
+    document.getElementById('admin-login-btn').onclick = function() {
+      const email = document.getElementById('admin-email').value.trim();
+      const password = document.getElementById('admin-password').value;
+      fetch('http://localhost:5000/api/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          document.getElementById('admin-login-error').textContent = data.error;
+          return;
+        }
+        if (!data.is_admin) {
+          document.getElementById('admin-login-error').textContent = 'Not an admin account.';
+          return;
+        }
+        localStorage.setItem('admin_token', data.token);
+        localStorage.setItem('admin_name', data.name);
+        localStorage.setItem('admin_email', data.email);
+        localStorage.setItem('admin_is_admin', '1');
+        document.getElementById('admin-login').style.display = 'none';
+        document.getElementById('admin-dashboard').style.display = '';
+        loadAdminData();
+      });
+    };
+    function loadAdminData() {
+      const token = localStorage.getItem('admin_token');
+      // Users
+      fetch('http://localhost:5000/api/admin/users', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      })
+      .then(res => res.json())
+      .then(users => {
+        const tbody = document.querySelector('#users-table tbody');
+        tbody.innerHTML = '';
+        users.forEach(u => {
+          tbody.innerHTML += `<tr><td>${u.id}</td><td>${u.name}</td><td>${u.email}</td><td>${u.is_admin ? 'yes' : ''}</td></tr>`;
+        });
+      });
+      // Orders
+      fetch('http://localhost:5000/api/admin/orders', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      })
+      .then(res => res.json())
+      .then(orders => {
+        const tbody = document.querySelector('#orders-table tbody');
+        tbody.innerHTML = '';
+        orders.forEach(o => {
+          let items = '';
+          try {
+            const arr = JSON.parse(o.items);
+            items = arr.map(i => `${i.name} × ${i.qty}`).join('<br>');
+          } catch { items = o.items; }
+          const addr = o.label ? `${o.label}<br>${o.line1}, ${o.city}, ${o.state} ${o.pincode}` : '';
+          tbody.innerHTML += `<tr><td>${o.id}</td><td>${o.user_name}</td><td>${o.user_email}</td><td>${items}</td><td>₹${o.total}</td><td>${addr}</td><td>${o.date.replace('T','<br>').slice(0,19)}</td></tr>`;
+        });
+      });
+    }
+    // Auto-login if admin token exists
+    if (localStorage.getItem('admin_token') && localStorage.getItem('admin_is_admin') === '1') {
+      document.getElementById('admin-login').style.display = 'none';
+      document.getElementById('admin-dashboard').style.display = '';
+      loadAdminData();
+    }
+  </script>
+</body>
+</html> 

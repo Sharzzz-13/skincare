@@ -1,17 +1,9 @@
 // Rhode-inspired, robust cart logic (minimal cart drawer)
 
-let productData = [
-  { id: "1", name: "Radiance Serum", price: 1299, image: "../images/1.jpg" },
-  { id: "2", name: "Hydra Cream", price: 1499, image: "../images/2.jpg" },
-  { id: "3", name: "Purity Cleanser", price: 1199, image: "../images/3.jpg" },
-  { id: "4", name: "Vitamin C Elixir", price: 1799, image: "../images/4.jpg" },
-  { id: "5", name: "Renewal Mask", price: 1599, image: "../images/5.jpg" },
-  { id: "6", name: "Soothe Balm", price: 999, image: "../images/6.jpg" },
-  { id: "7", name: "Clarity Toner", price: 1099, image: "../images/7.jpg" },
-  { id: "8", name: "Dew Drops", price: 1399, image: "../images/8.jpg" },
-  { id: "9", name: "Barrier Cream", price: 1299, image: "../images/9.jpg" },
-  { id: "10", name: "Night Repair", price: 1899, image: "../images/10.jpg" }
-];
+// Use global productData if available
+if (window.productData) {
+  productData = window.productData;
+}
 
 function addToCart(productId) {
   if (!productData.find(p => p.id === productId)) {
@@ -58,11 +50,34 @@ function renderCartDrawer() {
         </div>
         <div style="width:70px;text-align:right;">₹${itemTotal}</div>
         <button onclick="removeFromCart('${id}')" aria-label="Remove" style="background:none;border:none;font-size:1.2em;color:#7a5a3a;padding:0 0.3em;line-height:1;">&times;</button>
-      </div>
-    `;
+    </div>
+  `;
   });
   cartDrawer.innerHTML = html;
   updateCartCountBadge();
+  // Attach checkout button event listener directly here
+  const checkoutBtn = cartDrawer.querySelector('.cart-drawer-footer .btn.rhode-btn');
+  if (checkoutBtn) {
+    checkoutBtn.onclick = function(e) {
+      e.preventDefault();
+      // Use the same logic as in attachCheckoutButtonHandler
+      const checkoutModal = document.getElementById('checkout-modal');
+      const checkoutSummary = document.getElementById('checkout-summary');
+      const placeOrderBtn = document.getElementById('place-order-btn');
+      const user = window.getCurrentUser && getCurrentUser();
+      if (!user) {
+        document.getElementById('account-modal').classList.add('open');
+        setTimeout(() => {
+          const info = document.getElementById('account-user-info');
+          if (info) info.innerHTML = '<div style="color:#7a5a3a;margin-bottom:1em;">please sign in to checkout</div>' + info.innerHTML;
+        }, 100);
+        return;
+      }
+      if (typeof renderCheckoutSummary === 'function') renderCheckoutSummary();
+      checkoutModal.style.display = 'flex';
+    };
+  }
+  if (typeof attachCheckoutButtonHandler === 'function') attachCheckoutButtonHandler(); // for other modals if needed
 }
 window.renderCartDrawer = renderCartDrawer;
 

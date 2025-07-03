@@ -6,221 +6,26 @@
   <title>shop - skin genius</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    .rhode-product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2.5em 2em;
-      margin: 2.5em 0 2em;
-      padding: 0 2em;
-    }
-    .rhode-product-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-      padding: 1.5em 1.2em 1.7em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 0;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-    .rhode-product-card img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 9px;
-      margin-bottom: 1.2em;
-    }
-    .rhode-product-info {
-      text-align: center;
-    }
-    .rhode-product-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.13em;
-      font-weight: 500;
-      color: #7a5a3a;
-      margin-bottom: 0.22em;
-      display: block;
-    }
-    .rhode-product-desc {
-      color: #b7a99a;
-      font-size: 1em;
-      margin-bottom: 0.35em;
-      display: block;
-    }
-    .rhode-product-price {
-      font-size: 1.07em;
-      font-weight: 500;
-      margin-bottom: 0.8em;
-      display: block;
-    }
-    .product-qty-controls {
-      margin-top: 0.6em;
-    }
-    @media (max-width: 700px) {
-      .rhode-product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.3em 0.8em;
-        padding: 0 0.5em;
-      }
-      .rhode-product-card {
-        max-width: 98vw;
-        padding: 0.9em 0.5em 1.2em;
-      }
-      .rhode-product-card img {
-        width: 95px;
-        height: 95px;
-      }
-    }
-  </style>
 </head>
 <body>
-  <!-- ========================= -->
   <!-- Minimal Sticky Header -->
-  <!-- ========================= -->
   <header class="rhode-header">
     <div class="header-container">
-      <span class="logo">skin genius</span>
+      <a href="index.html" class="logo">skin genius</a>
       <nav class="main-nav">
-        <a href="../root/index.html">home</a>
-        <a href="../root/products.html">shop</a>
-        <a href="../root/about.html">about</a>
-        <a href="../root/contact.html">contact</a>
+        <a href="index.html">home</a>
+        <a href="products.html">shop</a>
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
       </nav>
       <div class="header-icons">
         <a href="#" aria-label="Cart" class="cart-icon" id="open-cart">🛒<span class="cart-count-badge" id="cart-count-badge"></span></a>
-        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤</a>
+        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤<span id="header-user-name" style="margin-left:0.7em;font-size:1em;font-weight:400;color:#b7a99a;letter-spacing:0.04em;text-transform:lowercase;"></span></a>
       </div>
     </div>
   </header>
 
-  <!-- ========================= -->
-  <!-- Product Grid Section -->
-  <!-- ========================= -->
-  <section class="rhode-product-grid-section">
-    <div class="carousel-title">our collection</div>
-    <div class="rhode-product-grid">
-      <div class="rhode-product-card" data-product-id="1">
-        <img src="../images/1.jpg" alt="product 1">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">radiance serum</span>
-          <span class="rhode-product-desc">brightens and revitalizes</span>
-          <span class="rhode-product-price">₹1,299</span>
-          <div class="product-qty-controls" id="qty-controls-1"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="2">
-        <img src="../images/2.jpg" alt="product 2">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">hydra cream</span>
-          <span class="rhode-product-desc">deep hydration</span>
-          <span class="rhode-product-price">₹1,499</span>
-          <div class="product-qty-controls" id="qty-controls-2"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="3">
-        <img src="../images/3.jpg" alt="product 3">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">purity cleanser</span>
-          <span class="rhode-product-desc">gentle daily cleanse</span>
-          <span class="rhode-product-price">₹1,199</span>
-          <div class="product-qty-controls" id="qty-controls-3"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="4">
-        <img src="../images/4.jpg" alt="product 4">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">vitamin c elixir</span>
-          <span class="rhode-product-desc">brightening boost</span>
-          <span class="rhode-product-price">₹1,799</span>
-          <div class="product-qty-controls" id="qty-controls-4"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="5">
-        <img src="../images/5.jpg" alt="product 5">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">renewal mask</span>
-          <span class="rhode-product-desc">overnight renewal</span>
-          <span class="rhode-product-price">₹1,599</span>
-          <div class="product-qty-controls" id="qty-controls-5"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="6">
-        <img src="../images/6.jpg" alt="product 6">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">soothe balm</span>
-          <span class="rhode-product-desc">calms & nourishes</span>
-          <span class="rhode-product-price">₹999</span>
-          <div class="product-qty-controls" id="qty-controls-6"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="7">
-        <img src="../images/7.jpg" alt="product 7">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">clarity toner</span>
-          <span class="rhode-product-desc">refines & balances</span>
-          <span class="rhode-product-price">₹1,099</span>
-          <div class="product-qty-controls" id="qty-controls-7"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="8">
-        <img src="../images/8.jpg" alt="product 8">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">dew drops</span>
-          <span class="rhode-product-desc">instant glow</span>
-          <span class="rhode-product-price">₹1,399</span>
-          <div class="product-qty-controls" id="qty-controls-8"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="9">
-        <img src="../images/9.jpg" alt="product 9">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">barrier cream</span>
-          <span class="rhode-product-desc">protects & restores</span>
-          <span class="rhode-product-price">₹1,299</span>
-          <div class="product-qty-controls" id="qty-controls-9"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="10">
-        <img src="../images/10.jpg" alt="product 10">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">night repair</span>
-          <span class="rhode-product-desc">overnight recovery</span>
-          <span class="rhode-product-price">₹1,899</span>
-          <div class="product-qty-controls" id="qty-controls-10"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= -->
-  <!-- Minimal Footer -->
-  <!-- ========================= -->
-  <footer class="rhode-footer">
-    <div class="footer-container">
-      <div class="footer-links">
-        <a href="../root/products.html">shop</a>
-        <a href="../root/about.html">about</a>
-        <a href="../root/contact.html">contact</a>
-        <a href="../root/faq.html">faq</a>
-        <a href="../root/privacy-policy.html">privacy</a>
-        <a href="../root/terms-of-service.html">terms</a>
-      </div>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram" class="social-link">instagram</a>
-        <a href="#" aria-label="Youtube" class="social-link">youtube</a>
-        <a href="#" aria-label="Tiktok" class="social-link">tiktok</a>
-      </div>
-      <div id="coming-soon-popup" class="coming-soon-popup" style="display:none;">coming soon</div>
-      <div class="footer-copy">&copy; 2024 skin genius. all rights reserved.</div>
-    </div>
-  </footer>
-
-  <!-- ========================= -->
   <!-- Minimal Cart Drawer -->
-  <!-- ========================= -->
   <div id="cart-drawer" class="cart-drawer">
     <div class="cart-drawer-header">
       <span class="cart-drawer-title">your bag</span>
@@ -235,9 +40,7 @@
     </div>
   </div>
 
-  <!-- ========================= -->
   <!-- Minimal Account Modal -->
-  <!-- ========================= -->
   <div id="account-modal" class="account-modal">
     <div class="account-modal-content">
       <button class="account-modal-close" id="close-account" aria-label="Close">&times;</button>
@@ -249,6 +52,8 @@
         <input type="email" placeholder="Email" required autocomplete="username">
         <input type="password" placeholder="Password" required autocomplete="current-password">
         <button type="submit" class="btn rhode-btn">sign in</button>
+        <div style="margin:1em 0;text-align:center;">or</div>
+        <div id="google-signin-btn" style="display:none;"></div>
       </form>
       <form id="signup-form" class="account-form" style="display:none;">
         <input type="text" placeholder="Name" required autocomplete="name">
@@ -256,12 +61,25 @@
         <input type="password" placeholder="Password" required autocomplete="new-password">
         <button type="submit" class="btn rhode-btn">sign up</button>
       </form>
+      <div id="account-user-info" style="display:none;text-align:center;margin-top:1.5em;"></div>
+      <div id="order-history-modal" class="checkout-modal" style="display:none;">
+        <div class="checkout-modal-content">
+          <button class="checkout-modal-close" id="close-order-history" aria-label="Close">&times;</button>
+          <h2 class="checkout-title">your orders</h2>
+          <div id="order-history-content"></div>
+        </div>
+      </div>
+      <div id="address-book-modal" class="checkout-modal" style="display:none;">
+        <div class="checkout-modal-content">
+          <button class="checkout-modal-close" id="close-address-book" aria-label="Close">&times;</button>
+          <h2 class="checkout-title">your addresses</h2>
+          <div id="address-book-content"></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ========================= -->
   <!-- Minimal Checkout Modal -->
-  <!-- ========================= -->
   <div id="checkout-modal" class="checkout-modal" style="display:none;">
     <div class="checkout-modal-content">
       <button class="checkout-modal-close" id="close-checkout" aria-label="Close">&times;</button>
@@ -271,214 +89,152 @@
     </div>
   </div>
 
-  <!-- ========================= -->
-  <!-- Scripts: Cart, Badge, Modal, etc. -->
-  <!-- ========================= -->
+  <!-- Rhode-Style Hero Section -->
+  <section class="rhode-hero-full">
+    <video autoplay muted loop playsinline class="hero-bg-video hero-bg-vertical">
+      <source src="../videos/vid2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="rhode-hero-content">
+      <h1 class="hero-title">shop the collection</h1>
+      <p class="hero-desc">intentional, high-performance essentials for every skin story.<br>discover your new daily ritual</p>
+    </div>
+  </section>
+
+  <!-- Product Grid Section (no carousel) -->
+  <section class="rhode-product-grid-section">
+    <div class="carousel-title">our collection</div>
+    <div class="rhode-product-grid">
+      <div class="rhode-product-card">
+        <img src="../images/1.jpg" alt="product 1">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">radiance serum</span>
+          <span class="rhode-product-desc">brightens and revitalizes</span>
+          <span class="rhode-product-price">₹1299</span>
+          <button class="btn rhode-btn" onclick="addToCart('1', this)">add to bag</button>
+      </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/2.jpg" alt="product 2">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">hydra cream</span>
+          <span class="rhode-product-desc">deep hydration</span>
+          <span class="rhode-product-price">₹1499</span>
+          <button class="btn rhode-btn" onclick="addToCart('2', this)">add to bag</button>
+        </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/3.jpg" alt="product 3">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">purity cleanser</span>
+          <span class="rhode-product-desc">gentle daily cleanse</span>
+          <span class="rhode-product-price">₹1199</span>
+          <button class="btn rhode-btn" onclick="addToCart('3', this)">add to bag</button>
+        </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/4.jpg" alt="product 4">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">vitamin c elixir</span>
+          <span class="rhode-product-desc">brightening boost</span>
+          <span class="rhode-product-price">₹1799</span>
+          <button class="btn rhode-btn" onclick="addToCart('4', this)">add to bag</button>
+        </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/5.jpg" alt="product 5">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">renewal mask</span>
+          <span class="rhode-product-desc">overnight renewal</span>
+          <span class="rhode-product-price">₹1399</span>
+          <button class="btn rhode-btn" onclick="addToCart('5', this)">add to bag</button>
+        </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/6.jpg" alt="product 6">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">soothe balm</span>
+          <span class="rhode-product-desc">calms & nourishes</span>
+          <span class="rhode-product-price">₹1099</span>
+          <button class="btn rhode-btn" onclick="addToCart('6', this)">add to bag</button>
+        </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/7.jpg" alt="product 7">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">clarity toner</span>
+          <span class="rhode-product-desc">refines & balances</span>
+          <span class="rhode-product-price">₹999</span>
+          <button class="btn rhode-btn" onclick="addToCart('7', this)">add to bag</button>
+        </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/8.jpg" alt="product 8">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">dew drops</span>
+          <span class="rhode-product-desc">instant glow</span>
+          <span class="rhode-product-price">₹1299</span>
+          <button class="btn rhode-btn" onclick="addToCart('8', this)">add to bag</button>
+        </div>
+      </div>
+      <div class="rhode-product-card">
+        <img src="../images/9.jpg" alt="product 9">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">barrier cream</span>
+          <span class="rhode-product-desc">protects & restores</span>
+          <span class="rhode-product-price">₹1499</span>
+          <button class="btn rhode-btn" onclick="addToCart('9', this)">add to bag</button>
+        </div>
+        </div>
+      <div class="rhode-product-card">
+        <img src="../images/10.jpg" alt="product 10">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">night repair</span>
+          <span class="rhode-product-desc">overnight recovery</span>
+          <span class="rhode-product-price">₹1599</span>
+          <button class="btn rhode-btn" onclick="addToCart('10', this)">add to bag</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal Footer -->
+  <footer class="rhode-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="products.html">shop</a>
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
+        <a href="faq.html">faq</a>
+        <a href="privacy-policy.html">privacy</a>
+        <a href="terms-of-service.html">terms</a>
+  </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">instagram</a>
+        <a href="#" aria-label="Youtube">youtube</a>
+        <a href="#" aria-label="Tiktok">tiktok</a>
+      </div>
+      <div class="footer-copy">&copy; 2024 skin genius. all rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+window.productData = [
+  { id: "1", name: "Radiance Serum", price: 1299, desc: "brightens & evens tone" },
+  { id: "2", name: "Hydra Cream", price: 1499, desc: "deep hydration, non-greasy" },
+  { id: "3", name: "Purity Cleanser", price: 1199, desc: "gentle, non-stripping" },
+  { id: "4", name: "Vitamin C Elixir", price: 1799, desc: "antioxidant boost" },
+  { id: "5", name: "Renewal Mask", price: 1399, desc: "overnight renewal" },
+  { id: "6", name: "Soothe Balm", price: 1099, desc: "calms & nourishes" },
+  { id: "7", name: "Clarity Toner", price: 999, desc: "refines & balances" },
+  { id: "8", name: "Dew Drops", price: 1299, desc: "instant glow" },
+  { id: "9", name: "Barrier Cream", price: 1499, desc: "protects & restores" },
+  { id: "10", name: "Night Repair", price: 1599, desc: "overnight recovery" }
+];
+</script>
   <script src="../js/script.js"></script>
   <script src="../js/cart.js"></script>
-  <script>
-    // Cart drawer open/close logic
-    const openCartBtn = document.getElementById('open-cart');
-    const closeCartBtn = document.getElementById('close-cart');
-    const cartDrawer = document.getElementById('cart-drawer');
-    openCartBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      cartDrawer.classList.add('open');
-      document.body.classList.add('cart-open');
-    });
-    closeCartBtn.addEventListener('click', function() {
-      cartDrawer.classList.remove('open');
-      document.body.classList.remove('cart-open');
-    });
-    // Optional: close drawer when clicking outside
-    window.addEventListener('click', function(e) {
-      if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && e.target !== openCartBtn) {
-        cartDrawer.classList.remove('open');
-        document.body.classList.remove('cart-open');
-      }
-    });
-    // Social media coming soon popup at top
-    const socialLinks = document.querySelectorAll('.footer-social .social-link');
-    const comingSoonPopup = document.getElementById('coming-soon-popup');
-    socialLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        comingSoonPopup.style.display = 'block';
-        comingSoonPopup.style.opacity = '1';
-        setTimeout(() => {
-          comingSoonPopup.style.opacity = '0';
-        }, 1800);
-        setTimeout(() => {
-          comingSoonPopup.style.display = 'none';
-        }, 2000);
-      });
-    });
-    // Minimal plus/minus controls for product cards (shop page)
-    function renderProductQtyControls() {
-      const ids = ['1','2','3','4','5','6','7','8','9','10'];
-      ids.forEach(id => {
-        const el = document.getElementById('qty-controls-' + id);
-        if (!el) return;
-        const qty = window.getCartQuantity ? getCartQuantity(id) : 0;
-        if (qty < 1) {
-          el.innerHTML = `<button class='btn rhode-btn' style='min-width:90px' onclick="addToCart('${id}')">add to bag</button>`;
-        } else {
-          el.innerHTML = `
-            <button onclick="updateCartQuantity('${id}', -1)" style="background:none;border:none;font-size:1.1em;color:#7a5a3a;padding:0 0.5em;">-</button>
-            <span style="min-width:1.5em;display:inline-block;text-align:center;">${qty}</span>
-            <button onclick="updateCartQuantity('${id}', 1)" style="background:none;border:none;font-size:1.1em;color:#7a5a3a;padding:0 0.5em;">+</button>
-          `;
-        }
-      });
-    }
-    window.renderProductQtyControls = renderProductQtyControls;
-    // Patch cart functions to also update product controls
-    const _origAddToCart = window.addToCart;
-    window.addToCart = function(pid) { _origAddToCart(pid); renderProductQtyControls(); };
-    const _origUpdateCartQuantity = window.updateCartQuantity;
-    window.updateCartQuantity = function(pid, ch) { _origUpdateCartQuantity(pid, ch); renderProductQtyControls(); };
-    document.addEventListener('DOMContentLoaded', renderProductQtyControls);
-    // Minimal checkout modal logic (shop page)
-    (function() {
-      const checkoutBtn = document.querySelector('.cart-drawer-footer .btn.rhode-btn');
-      if (!checkoutBtn) return;
-      const checkoutModal = document.getElementById('checkout-modal');
-      const closeCheckoutBtn = document.getElementById('close-checkout');
-      const checkoutSummary = document.getElementById('checkout-summary');
-      const placeOrderBtn = document.getElementById('place-order-btn');
-      // Open checkout modal
-      checkoutBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const user = getCurrentUser && getCurrentUser();
-        if (!user) {
-          document.getElementById('account-modal').classList.add('open');
-          setTimeout(() => {
-            const info = document.getElementById('account-user-info');
-            if (info) info.innerHTML = '<div style="color:#7a5a3a;margin-bottom:1em;">please sign in to checkout</div>' + info.innerHTML;
-          }, 100);
-          return;
-        }
-        renderCheckoutSummary();
-        checkoutModal.style.display = 'flex';
-      });
-      // Close checkout modal
-      closeCheckoutBtn.addEventListener('click', function() {
-        checkoutModal.style.display = 'none';
-      });
-      // Render order summary with address picker
-      window.renderCheckoutSummary = function() {
-        const user = getCurrentUser && getCurrentUser();
-        if (!user) return;
-        const users = JSON.parse(localStorage.getItem('users') || '{}');
-        const userData = users[user.email] || {};
-        const addresses = userData.addresses || [];
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        if (!cart.length) {
-          checkoutSummary.innerHTML = '<p>Your bag is empty.</p>';
-          return;
-        }
-        const counts = {};
-        cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
-        let html = '<ul style="list-style:none;padding:0;">';
-        let subtotal = 0;
-        Object.entries(counts).forEach(([id, qty]) => {
-          const item = window.productData.find(p => p.id === id);
-          if (!item) return;
-          const itemTotal = item.price * qty;
-          subtotal += itemTotal;
-          html += `<li style="margin-bottom:0.7em;">${item.name} × ${qty} <span style="float:right;">₹${itemTotal}</span></li>`;
-        });
-        html += `</ul><div style="margin-top:1em;font-weight:500;">Total: ₹${subtotal}</div>`;
-        // Address picker
-        html += '<div style="margin:1.5em 0 0.5em;font-weight:500;">shipping address</div>';
-        if (addresses.length) {
-          html += '<select id="address-picker" style="width:100%;padding:0.5em 0.7em;margin-bottom:1em;">';
-          addresses.forEach((addr, i) => {
-            html += `<option value="${i}">${addr.label || addr.line1 + ', ' + addr.city}</option>`;
-          });
-          html += '</select>';
-        } else {
-          html += '<div style="color:#b7a99a;margin-bottom:1em;">no addresses saved</div>';
-        }
-        html += '<button id="add-address-btn" class="btn rhode-btn" style="width:100%;margin-bottom:1em;">add new address</button>';
-        checkoutSummary.innerHTML = html;
-        document.getElementById('add-address-btn').onclick = function() {
-          showAddressForm(user.email);
-        };
-      }
-      // Show address form
-      function showAddressForm(email) {
-        const formHtml = `
-          <form id="address-form" style="margin:1em 0 0.5em;">
-            <input type="text" placeholder="Label (e.g. Home, Work)" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="Address Line 1" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="City" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="State" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="Pincode" style="width:100%;margin-bottom:0.7em;" required />
-            <button type="submit" class="btn rhode-btn" style="width:100%;">save address</button>
-          </form>
-        `;
-        checkoutSummary.innerHTML += formHtml;
-        const form = document.getElementById('address-form');
-        form.onsubmit = function(e) {
-          e.preventDefault();
-          const [label, line1, city, state, pincode] = Array.from(form.querySelectorAll('input')).map(i => i.value.trim());
-          let users = JSON.parse(localStorage.getItem('users') || '{}');
-          if (!users[email].addresses) users[email].addresses = [];
-          users[email].addresses.push({ label, line1, city, state, pincode });
-          localStorage.setItem('users', JSON.stringify(users));
-          renderCheckoutSummary();
-        };
-      }
-      // Place order
-      placeOrderBtn.addEventListener('click', function() {
-        const user = getCurrentUser && getCurrentUser();
-        if (!user) {
-          document.getElementById('account-modal').classList.add('open');
-          return;
-        }
-        const users = JSON.parse(localStorage.getItem('users') || '{}');
-        const userData = users[user.email] || {};
-        const addresses = userData.addresses || [];
-        let address = null;
-        if (addresses.length) {
-          const picker = document.getElementById('address-picker');
-          address = addresses[picker ? picker.value : 0];
-        }
-        if (!address) {
-          alert('Please add and select an address to place your order.');
-          return;
-        }
-        // Gather cart and product data
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        if (!cart.length) return;
-        const counts = {};
-        cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
-        const items = [];
-        let total = 0;
-        Object.entries(counts).forEach(([id, qty]) => {
-          const item = window.productData.find(p => p.id === id);
-          if (!item) return;
-          const itemTotal = item.price * qty;
-          total += itemTotal;
-          items.push({ id, name: item.name, qty, total: itemTotal });
-        });
-        // Generate order number and date
-        const orderNumber = Math.floor(100000 + Math.random() * 900000);
-        const date = new Date().toLocaleString();
-        // Store order in localStorage
-        const order = { orderNumber, date, items, total, address };
-        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-        orders.push(order);
-        localStorage.setItem('orders', JSON.stringify(orders));
-        // Clear cart and update UI
-        localStorage.removeItem('cart');
-        if (window.renderCartDrawer) renderCartDrawer();
-        if (window.renderProductQtyControls) renderProductQtyControls();
-        // Redirect to thank you page
-        window.location.href = 'thankyou.html?order=' + orderNumber;
-      });
-    })();
-  </script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html> 

@@ -20,7 +20,7 @@
       </nav>
       <div class="header-icons">
         <a href="#" aria-label="Cart" class="cart-icon" id="open-cart">🛒<span class="cart-count-badge" id="cart-count-badge"></span></a>
-        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤</a>
+        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤<span id="header-user-name" style="margin-left:0.7em;font-size:1em;font-weight:400;color:#b7a99a;letter-spacing:0.04em;text-transform:lowercase;"></span></a>
       </div>
     </div>
   </header>
@@ -41,44 +41,7 @@
   <!-- Tight Horizontal Product Carousel -->
   <section class="rhode-carousel-section">
     <div class="carousel-title">featured collection</div>
-    <div class="rhode-product-carousel">
-      <div class="rhode-product-card" data-product-id="1">
-        <img src="../images/1.jpg" alt="product 1">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">radiance serum</span>
-          <span class="rhode-product-desc">brightens and revitalizes</span>
-          <span class="rhode-product-price">₹1,299</span>
-          <div class="product-qty-controls" id="qty-controls-1"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="2">
-        <img src="../images/2.jpg" alt="product 2">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">hydra cream</span>
-          <span class="rhode-product-desc">deep hydration</span>
-          <span class="rhode-product-price">₹1,499</span>
-          <div class="product-qty-controls" id="qty-controls-2"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="3">
-        <img src="../images/3.jpg" alt="product 3">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">purity cleanser</span>
-          <span class="rhode-product-desc">gentle daily cleanse</span>
-          <span class="rhode-product-price">₹1,199</span>
-          <div class="product-qty-controls" id="qty-controls-3"></div>
-        </div>
-      </div>
-      <div class="rhode-product-card" data-product-id="4">
-        <img src="../images/4.jpg" alt="product 4">
-        <div class="rhode-product-info">
-          <span class="rhode-product-name">vitamin c elixir</span>
-          <span class="rhode-product-desc">brightening boost</span>
-          <span class="rhode-product-price">₹1,799</span>
-          <div class="product-qty-controls" id="qty-controls-4"></div>
-        </div>
-      </div>
-    </div>
+    <div class="rhode-product-carousel" id="carousel-products"></div>
   </section>
 
   <!-- Editorial/Brand Statement Section with Background Image -->
@@ -117,15 +80,15 @@
     <div class="cart-drawer-header">
       <span class="cart-drawer-title">your bag</span>
       <button id="close-cart" class="cart-drawer-close" aria-label="Close cart">&times;</button>
-    </div>
+        </div>
     <div class="cart-drawer-content">
       <p class="cart-empty">your bag is empty.</p>
       <!-- Cart items will be dynamically inserted here -->
     </div>
     <div class="cart-drawer-footer">
       <button class="btn rhode-btn" style="width:100%">checkout</button>
-    </div>
-  </div>
+        </div>
+      </div>
 
   <!-- Minimal Account Modal -->
   <div id="account-modal" class="account-modal">
@@ -140,7 +103,7 @@
         <input type="password" placeholder="Password" required autocomplete="current-password">
         <button type="submit" class="btn rhode-btn">sign in</button>
         <div style="margin:1em 0;text-align:center;">or</div>
-        <div id="google-signin-btn" style="display:flex;justify-content:center;"></div>
+        <div id="google-signin-btn" style="display:none;"></div>
       </form>
       <form id="signup-form" class="account-form" style="display:none;">
         <input type="text" placeholder="Name" required autocomplete="name">
@@ -149,6 +112,20 @@
         <button type="submit" class="btn rhode-btn">sign up</button>
       </form>
       <div id="account-user-info" style="display:none;text-align:center;margin-top:1.5em;"></div>
+      <div id="order-history-modal" class="checkout-modal" style="display:none;">
+        <div class="checkout-modal-content">
+          <button class="checkout-modal-close" id="close-order-history" aria-label="Close">&times;</button>
+          <h2 class="checkout-title">your orders</h2>
+          <div id="order-history-content"></div>
+        </div>
+      </div>
+      <div id="address-book-modal" class="checkout-modal" style="display:none;">
+        <div class="checkout-modal-content">
+          <button class="checkout-modal-close" id="close-address-book" aria-label="Close">&times;</button>
+          <h2 class="checkout-title">your addresses</h2>
+          <div id="address-book-content"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -164,336 +141,63 @@
 
   <script src="../js/script.js"></script>
   <script src="../js/cart.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script>
-    // Cart drawer open/close logic
-    const openCartBtn = document.getElementById('open-cart');
-    const closeCartBtn = document.getElementById('close-cart');
-    const cartDrawer = document.getElementById('cart-drawer');
-    const cartDrawerContent = document.querySelector('.cart-drawer-content');
-    if (openCartBtn && closeCartBtn && cartDrawer) {
-      openCartBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        cartDrawer.classList.add('open');
-        document.body.classList.add('cart-open');
-        if (typeof renderCartDrawer === 'function') renderCartDrawer();
-      });
-      closeCartBtn.addEventListener('click', function() {
-        cartDrawer.classList.remove('open');
-        document.body.classList.remove('cart-open');
-      });
-      // Prevent cart drawer from closing when clicking inside the drawer content
-      if (cartDrawerContent) {
-        cartDrawerContent.addEventListener('click', function(e) {
-          e.stopPropagation();
-        });
-      }
-      window.addEventListener('click', function(e) {
-        if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && e.target !== openCartBtn) {
-          cartDrawer.classList.remove('open');
-          document.body.classList.remove('cart-open');
-        }
-      });
-    }
-    // Social media coming soon popup at top
-    const socialLinks = document.querySelectorAll('.footer-social .social-link');
-    const comingSoonPopup = document.getElementById('coming-soon-popup');
-    socialLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        comingSoonPopup.style.display = 'block';
-        comingSoonPopup.style.opacity = '1';
-        setTimeout(() => {
-          comingSoonPopup.style.opacity = '0';
-        }, 1800);
-        setTimeout(() => {
-          comingSoonPopup.style.display = 'none';
-        }, 2000);
-      });
-    });
-    // Account modal open/close/toggle logic
-    const openAccountBtn = document.getElementById('open-account');
-    const closeAccountBtn = document.getElementById('close-account');
-    const accountModal = document.getElementById('account-modal');
-    const tabSignin = document.getElementById('tab-signin');
-    const tabSignup = document.getElementById('tab-signup');
-    const signinForm = document.getElementById('signin-form');
-    const signupForm = document.getElementById('signup-form');
-    openAccountBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      accountModal.classList.add('open');
-    });
-    closeAccountBtn.addEventListener('click', function() {
-      accountModal.classList.remove('open');
-    });
-    window.addEventListener('click', function(e) {
-      if (accountModal.classList.contains('open') && !document.querySelector('.account-modal-content').contains(e.target) && e.target !== openAccountBtn) {
-        accountModal.classList.remove('open');
-      }
-    });
-    tabSignin.addEventListener('click', function() {
-      tabSignin.classList.add('active');
-      tabSignup.classList.remove('active');
-      signinForm.style.display = '';
-      signupForm.style.display = 'none';
-    });
-    tabSignup.addEventListener('click', function() {
-      tabSignup.classList.add('active');
-      tabSignin.classList.remove('active');
-      signupForm.style.display = '';
-      signinForm.style.display = 'none';
-    });
-    // Prevent form submission (demo only)
-    signinForm.addEventListener('submit', function(e) { e.preventDefault(); alert('Sign in (demo)'); });
-    signupForm.addEventListener('submit', function(e) { e.preventDefault(); alert('Sign up (demo)'); });
-    // Minimal plus/minus controls for product cards
-    function renderProductQtyControls() {
-      const ids = ['1','2','3','4'];
-      ids.forEach(id => {
-        const el = document.getElementById('qty-controls-' + id);
-        if (!el) return;
-        const qty = window.getCartQuantity ? getCartQuantity(id) : 0;
-        if (qty < 1) {
-          el.innerHTML = `<button class='btn rhode-btn' style='min-width:90px' onclick="addToCart('${id}')">add to bag</button>`;
-        } else {
-          el.innerHTML = `
-            <button onclick="updateCartQuantity('${id}', -1)" style="background:none;border:none;font-size:1.1em;color:#7a5a3a;padding:0 0.5em;">-</button>
-            <span style="min-width:1.5em;display:inline-block;text-align:center;">${qty}</span>
-            <button onclick="updateCartQuantity('${id}', 1)" style="background:none;border:none;font-size:1.1em;color:#7a5a3a;padding:0 0.5em;">+</button>
-          `;
-        }
-      });
-    }
-    // Re-render controls after cart changes
-    window.renderProductQtyControls = renderProductQtyControls;
-    // Patch cart functions to also update product controls
-    const _origAddToCart = window.addToCart;
-    window.addToCart = function(pid) { _origAddToCart(pid); renderProductQtyControls(); };
-    const _origUpdateCartQuantity = window.updateCartQuantity;
-    window.updateCartQuantity = function(pid, ch) { _origUpdateCartQuantity(pid, ch); renderProductQtyControls(); };
-    document.addEventListener('DOMContentLoaded', renderProductQtyControls);
-    // Minimal checkout modal logic
-    (function() {
-      const checkoutBtn = document.querySelector('.cart-drawer-footer .btn.rhode-btn');
-      if (!checkoutBtn) return;
-      const checkoutModal = document.getElementById('checkout-modal');
-      const closeCheckoutBtn = document.getElementById('close-checkout');
-      const checkoutSummary = document.getElementById('checkout-summary');
-      const placeOrderBtn = document.getElementById('place-order-btn');
-      // Open checkout modal
-      checkoutBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const user = getCurrentUser && getCurrentUser();
-        if (!user) {
-          // Not signed in: open account modal and show message
-          document.getElementById('account-modal').classList.add('open');
-          setTimeout(() => {
-            const info = document.getElementById('account-user-info');
-            if (info) info.innerHTML = '<div style="color:#7a5a3a;margin-bottom:1em;">please sign in to checkout</div>' + info.innerHTML;
-          }, 100);
-          return;
-        }
-        renderCheckoutSummary();
-        checkoutModal.style.display = 'flex';
-      });
-      // Close checkout modal
-      closeCheckoutBtn.addEventListener('click', function() {
-        checkoutModal.style.display = 'none';
-      });
-      // Render order summary with address picker
-      window.renderCheckoutSummary = function() {
-        const user = getCurrentUser && getCurrentUser();
-        if (!user) return;
-        const users = JSON.parse(localStorage.getItem('users') || '{}');
-        const userData = users[user.email] || {};
-        const addresses = userData.addresses || [];
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        if (!cart.length) {
-          checkoutSummary.innerHTML = '<p>Your bag is empty.</p>';
-          return;
-        }
-        const counts = {};
-        cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
-        let html = '<ul style="list-style:none;padding:0;">';
-        let subtotal = 0;
-        Object.entries(counts).forEach(([id, qty]) => {
-          const item = window.productData.find(p => p.id === id);
-          if (!item) return;
-          const itemTotal = item.price * qty;
-          subtotal += itemTotal;
-          html += `<li style="margin-bottom:0.7em;">${item.name} × ${qty} <span style="float:right;">₹${itemTotal}</span></li>`;
-        });
-        html += `</ul><div style="margin-top:1em;font-weight:500;">Total: ₹${subtotal}</div>`;
-        // Address picker
-        html += '<div style="margin:1.5em 0 0.5em;font-weight:500;">shipping address</div>';
-        if (addresses.length) {
-          html += '<select id="address-picker" style="width:100%;padding:0.5em 0.7em;margin-bottom:1em;">';
-          addresses.forEach((addr, i) => {
-            html += `<option value="${i}">${addr.label || addr.line1 + ', ' + addr.city}</option>`;
-          });
-          html += '</select>';
-        } else {
-          html += '<div style="color:#b7a99a;margin-bottom:1em;">no addresses saved</div>';
-        }
-        html += '<button id="add-address-btn" class="btn rhode-btn" style="width:100%;margin-bottom:1em;">add new address</button>';
-        checkoutSummary.innerHTML = html;
-        document.getElementById('add-address-btn').onclick = function() {
-          showAddressForm(user.email);
-        };
-      }
-      // Show address form
-      function showAddressForm(email) {
-        const formHtml = `
-          <form id="address-form" style="margin:1em 0 0.5em;">
-            <input type="text" placeholder="Label (e.g. Home, Work)" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="Address Line 1" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="City" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="State" style="width:100%;margin-bottom:0.7em;" required />
-            <input type="text" placeholder="Pincode" style="width:100%;margin-bottom:0.7em;" required />
-            <button type="submit" class="btn rhode-btn" style="width:100%;">save address</button>
-          </form>
+function renderCarouselProducts() {
+  fetch('http://localhost:5000/api/products')
+    .then(res => res.json())
+    .then(products => {
+      window.productData = products;
+      const carousel = document.getElementById('carousel-products');
+      if (!carousel) return;
+      let html = '';
+      products.slice(0, 4).forEach(p => {
+        html += `
+          <div class="rhode-product-card" data-product-id="${p.id}">
+            <img src="../images/${p.id}.jpg" alt="${p.name}">
+            <div class="rhode-product-info">
+              <span class="rhode-product-name">${p.name.toLowerCase()}</span>
+              <span class="rhode-product-desc">${p.desc || ''}</span>
+              <span class="rhode-product-price">₹${p.price}</span>
+              <div class="product-qty-controls" id="qty-controls-${p.id}"></div>
+            </div>
+          </div>
         `;
-        checkoutSummary.innerHTML += formHtml;
-        const form = document.getElementById('address-form');
-        form.onsubmit = function(e) {
-          e.preventDefault();
-          const [label, line1, city, state, pincode] = Array.from(form.querySelectorAll('input')).map(i => i.value.trim());
-          let users = JSON.parse(localStorage.getItem('users') || '{}');
-          if (!users[email].addresses) users[email].addresses = [];
-          users[email].addresses.push({ label, line1, city, state, pincode });
-          localStorage.setItem('users', JSON.stringify(users));
-          renderCheckoutSummary();
-        };
-      }
-      // Place order
-      placeOrderBtn.addEventListener('click', function() {
-        const user = getCurrentUser && getCurrentUser();
-        if (!user) {
-          document.getElementById('account-modal').classList.add('open');
-          return;
-        }
-        const users = JSON.parse(localStorage.getItem('users') || '{}');
-        const userData = users[user.email] || {};
-        const addresses = userData.addresses || [];
-        let address = null;
-        if (addresses.length) {
-          const picker = document.getElementById('address-picker');
-          address = addresses[picker ? picker.value : 0];
-        }
-        if (!address) {
-          alert('Please add and select an address to place your order.');
-          return;
-        }
-        // Gather cart and product data
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        if (!cart.length) return;
-        const counts = {};
-        cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
-        const items = [];
-        let total = 0;
-        Object.entries(counts).forEach(([id, qty]) => {
-          const item = window.productData.find(p => p.id === id);
-          if (!item) return;
-          const itemTotal = item.price * qty;
-          total += itemTotal;
-          items.push({ id, name: item.name, qty, total: itemTotal });
-        });
-        // Generate order number and date
-        const orderNumber = Math.floor(100000 + Math.random() * 900000);
-        const date = new Date().toLocaleString();
-        // Store order in localStorage
-        const order = { orderNumber, date, items, total, address };
-        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-        orders.push(order);
-        localStorage.setItem('orders', JSON.stringify(orders));
-        // Clear cart and update UI
-        localStorage.removeItem('cart');
-        if (window.renderCartDrawer) renderCartDrawer();
-        if (window.renderProductQtyControls) renderProductQtyControls();
-        // Redirect to thank you page
-        window.location.href = 'thankyou.html?order=' + orderNumber;
       });
-    })();
-    // DEMO ACCOUNT LOGIC (localStorage)
-    function setCurrentUser(user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-    }
-    function getCurrentUser() {
-      try { return JSON.parse(localStorage.getItem('currentUser')); } catch { return null; }
-    }
-    function signOutUser() {
-      localStorage.removeItem('currentUser');
-      renderAccountUserInfo();
-    }
-    function renderAccountUserInfo() {
-      const user = getCurrentUser();
-      const info = document.getElementById('account-user-info');
-      if (!info) return;
-      if (user) {
-        info.style.display = '';
-        info.innerHTML = `<div style='margin-bottom:0.7em;'>signed in as <b>${user.name || user.email}</b></div><button onclick='signOutUser()' class='btn rhode-btn' style='font-size:0.95em;'>sign out</button>`;
-        document.getElementById('signin-form').style.display = 'none';
-        document.getElementById('signup-form').style.display = 'none';
-        document.querySelector('.account-modal-tabs').style.display = 'none';
-      } else {
-        info.style.display = 'none';
-        document.getElementById('signin-form').style.display = '';
-        document.getElementById('signup-form').style.display = 'none';
-        document.querySelector('.account-modal-tabs').style.display = '';
-      }
-    }
-    // Email/password demo sign up
-    const demoSignupForm = document.getElementById('signup-form');
-    demoSignupForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = demoSignupForm.querySelector('input[placeholder="Name"]').value.trim();
-      const email = demoSignupForm.querySelector('input[placeholder="Email"]').value.trim().toLowerCase();
-      const password = demoSignupForm.querySelector('input[placeholder="Password"]').value;
-      if (!name || !email || !password) return alert('Fill all fields');
-      let users = JSON.parse(localStorage.getItem('users') || '{}');
-      if (users[email]) return alert('Account already exists');
-      users[email] = { name, email, password, addresses: [] };
-      localStorage.setItem('users', JSON.stringify(users));
-      setCurrentUser({ name, email });
-      renderAccountUserInfo();
-    });
-    // Email/password demo sign in
-    const demoSigninForm = document.getElementById('signin-form');
-    demoSigninForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = demoSigninForm.querySelector('input[placeholder="Email"]').value.trim().toLowerCase();
-      const password = demoSigninForm.querySelector('input[placeholder="Password"]').value;
-      let users = JSON.parse(localStorage.getItem('users') || '{}');
-      if (!users[email] || users[email].password !== password) return alert('Invalid credentials');
-      setCurrentUser({ name: users[email].name, email });
-      renderAccountUserInfo();
-    });
-    // Google Sign-In
-    window.handleGoogleSignIn = function(response) {
-      const data = parseJwt(response.credential);
-      if (!data || !data.email) return alert('Google sign-in failed');
-      let users = JSON.parse(localStorage.getItem('users') || '{}');
-      if (!users[data.email]) {
-        users[data.email] = { name: data.name || data.email, email: data.email, password: '', addresses: [] };
-        localStorage.setItem('users', JSON.stringify(users));
-      }
-      setCurrentUser({ name: data.name || data.email, email: data.email });
-      renderAccountUserInfo();
-    };
-    function parseJwt(token) {
-      try { return JSON.parse(atob(token.split('.')[1])); } catch { return {}; }
-    }
-    window.onload = function() {
-      google.accounts.id.initialize({
-        client_id: 'YOUR_GOOGLE_CLIENT_ID', // <-- Replace with your Google Client ID
-        callback: handleGoogleSignIn
+      carousel.innerHTML = html;
+      if (window.renderProductQtyControls) renderProductQtyControls();
+    })
+    .catch(() => {
+      // Fallback: static demo products
+      const products = [
+        { id: "1", name: "Radiance Serum", price: 1299, desc: "brightens & evens tone" },
+        { id: "2", name: "Hydra Cream", price: 1499, desc: "deep hydration, non-greasy" },
+        { id: "3", name: "Purity Cleanser", price: 1199, desc: "gentle, non-stripping" },
+        { id: "4", name: "Vitamin C Elixir", price: 1799, desc: "antioxidant boost" }
+      ];
+      window.productData = products;
+      const carousel = document.getElementById('carousel-products');
+      if (!carousel) return;
+      let html = '';
+      products.forEach(p => {
+        html += `
+          <div class="rhode-product-card" data-product-id="${p.id}">
+            <img src="../images/${p.id}.jpg" alt="${p.name}">
+            <div class="rhode-product-info">
+              <span class="rhode-product-name">${p.name.toLowerCase()}</span>
+              <span class="rhode-product-desc">${p.desc || ''}</span>
+              <span class="rhode-product-price">₹${p.price}</span>
+              <div class="product-qty-controls" id="qty-controls-${p.id}"></div>
+            </div>
+          </div>
+        `;
       });
-      google.accounts.id.renderButton(
-        document.getElementById('google-signin-btn'),
-        { theme: 'outline', size: 'large', width: 240 }
-      );
-      renderAccountUserInfo();
-    };
+      carousel.innerHTML = html;
+      if (window.renderProductQtyControls) renderProductQtyControls();
+    });
+}
+document.addEventListener('DOMContentLoaded', renderCarouselProducts);
   </script>
 </body>
 </html>
