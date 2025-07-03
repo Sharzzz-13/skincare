@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
+  <!-- ========================= -->
+  <!-- Minimal Header -->
+  <!-- ========================= -->
   <header class="animate__animated animate__fadeInDown">
     <div class="container">
       <h1>Skin Genius</h1>
@@ -23,6 +26,19 @@
     </div>
   </header>
 
+  <!-- ========================= -->
+  <!-- Product Hero/Intro Section -->
+  <!-- ========================= -->
+  <section class="rhode-hero-bg rhode-product-bg">
+    <div class="rhode-hero-content">
+      <h2>Product Details</h2>
+      <p>Discover the science and story behind every formula.</p>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Product Detail Section -->
+  <!-- ========================= -->
   <section class="products-section animate__animated animate__zoomIn">
     <div class="container">
       <div id="product-detail" class="product-detail"></div>
@@ -31,25 +47,19 @@
     </div>
   </section>
 
+  <!-- ========================= -->
+  <!-- Minimal Footer -->
+  <!-- ========================= -->
   <footer class="animate__animated animate__fadeInUp">
     <div class="container">
       <p>&copy; 2024 Skin Genius. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- ========================= -->
+  <!-- Scripts: Product Logic -->
+  <!-- ========================= -->
   <script src="../js/script.js"></script>
   <script src="../js/product-detail.js"></script>
-  <script>
-    const form = document.getElementById('payment-form');
-    const msg = document.getElementById('payment-message');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        msg.style.display = 'block';
-        msg.classList.add('animate__fadeIn');
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      });
-    }
-  </script>
 </body>
 </html>

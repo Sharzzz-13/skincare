@@ -3,153 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - Skin Genius</title>
+  <title>about - skin genius</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Premium Header -->
-  <header>
-    <div class="container">
-      <h1>Skin Genius</h1>
-      <div class="header-buttons">
-        <button class="header-btn" onclick="showAuthModal()">Sign In</button>
-        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+  <!-- ========================= -->
+  <!-- Minimal Sticky Header -->
+  <!-- ========================= -->
+  <header class="rhode-header">
+    <div class="header-container">
+      <span class="logo">skin genius</span>
+      <nav class="main-nav">
+        <a href="../root/index.html">home</a>
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+      </nav>
+      <div class="header-icons">
+        <a href="#" aria-label="Cart" class="cart-icon" id="open-cart">🛒</a>
+        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero About Section -->
-  <section class="about-hero" style="background-image: url('../images/12.jpg');">
-    <div class="about-hero-content">
-      <h2>Our Story</h2>
-      <p>Where science meets beauty, and every product tells a story of transformation.</p>
-    </div>
-  </section>
-
-  <!-- About Content Section -->
-  <section class="about-content-section">
-    <div class="container">
-      <div class="about-intro">
-        <h3>The Skin Genius Philosophy</h3>
-        <p>At <strong>Skin Genius</strong>, we believe skincare is self-care. Our journey began with a simple idea: to create gentle, effective, and joyful products for every skin type. We blend science and nature to bring out your natural glow—because everyone deserves to feel confident in their own skin.</p>
+  <!-- ========================= -->
+  <!-- Our Story Section -->
+  <!-- ========================= -->
+  <section class="about-story-section about-story-bg-img about-story-bg-14">
+    <div class="about-story-bg-overlay"></div>
+    <div class="about-story-container">
+      <h2 class="about-story-title">our story</h2>
+      <div class="about-story-intro">born from a love of skin, science, and simplicity.</div>
+      <div class="about-story-text">
+        <p>at skin genius, we believe skincare should be intentional, effective, and beautiful. our mission is to create high-performance essentials that elevate your daily ritual—products you love, trust, and always return to.</p>
+        <p>we blend cutting-edge science with a minimalist philosophy, focusing on what truly works for every skin story. our formulas are clean, gentle, and inclusive—crafted for all skin types, tones, and moments.</p>
+        <p>we're here to make skincare simple, poetic, and powerful. welcome to skin genius.</p>
       </div>
-
-      <div class="about-values">
-        <div class="value-card">
-          <div class="value-icon">🌿</div>
-          <h4>Natural Ingredients</h4>
-          <p>We use safe, skin-loving ingredients—no harsh chemicals, ever. Every formula is crafted with nature's finest botanicals.</p>
+      <div class="about-values-row">
+        <div class="about-value-card">
+          <div class="about-value-icon">🧬</div>
+          <div class="about-value-label">science-backed</div>
+          <div class="about-value-desc">formulas rooted in research and results</div>
         </div>
-        <div class="value-card">
-          <div class="value-icon">🐰</div>
-          <h4>Cruelty-Free</h4>
-          <p>Our products are never tested on animals. Kindness is at our core, extending to all living beings.</p>
+        <div class="about-value-card">
+          <div class="about-value-icon">🌱</div>
+          <div class="about-value-label">intentional</div>
+          <div class="about-value-desc">only what your skin truly needs</div>
         </div>
-        <div class="value-card">
-          <div class="value-icon">✨</div>
-          <h4>For Every Skin</h4>
-          <p>We celebrate diversity and create formulas for all skin tones and types. Beauty knows no boundaries.</p>
+        <div class="about-value-card">
+          <div class="about-value-icon">🤍</div>
+          <div class="about-value-label">inclusive</div>
+          <div class="about-value-desc">for every skin type, tone, and story</div>
         </div>
-        <div class="value-card">
-          <div class="value-icon">🧬</div>
-          <h4>Science-Backed</h4>
-          <p>Every formula is developed with leading dermatologists and backed by clinical research for proven results.</p>
+        <div class="about-value-card">
+          <div class="about-value-icon">✨</div>
+          <div class="about-value-label">clean beauty</div>
+          <div class="about-value-desc">gentle, safe, and always cruelty-free</div>
         </div>
-      </div>
-
-      <div class="about-team">
-        <h3>Meet Our Team</h3>
-        <p>We're a small, passionate group of skincare lovers, scientists, and dreamers. Our mission is to make you feel beautiful, inside and out. Thank you for being part of our story! 💖</p>
       </div>
     </div>
   </section>
 
-  <!-- Luxury Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Skin Genius</h3>
-          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="products.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="how-to-use.html">How to Use</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">Customer Care</a></li>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Twitter">🐦</a>
-            <a href="#" aria-label="YouTube">📺</a>
-          </div>
-        </div>
+  <!-- ========================= -->
+  <!-- Minimal Footer -->
+  <!-- ========================= -->
+  <footer class="rhode-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+        <a href="../root/faq.html">faq</a>
+        <a href="../root/privacy-policy.html">privacy</a>
+        <a href="../root/terms-of-service.html">terms</a>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-link">instagram</a>
+        <a href="#" aria-label="Youtube" class="social-link">youtube</a>
+        <a href="#" aria-label="Tiktok" class="social-link">tiktok</a>
       </div>
+      <div id="coming-soon-popup" class="coming-soon-popup" style="display:none;">coming soon</div>
+      <div class="footer-copy">&copy; 2024 skin genius. all rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Premium Menu Overlay -->
-  <div class="main-menu" id="mainMenu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="how-to-use.html">How to Use</a></li>
-      <li><a href="results.html">Results</a></li>
-    </ul>
-  </div>
-
-  <!-- Premium Auth Modal -->
-  <div class="auth-modal" id="authModal">
-    <div class="auth-modal-content">
-      <button class="close-auth" onclick="hideAuthModal()">&times;</button>
-      <div id="authForms">
-        <div id="loginForm">
-          <h3>Welcome Back</h3>
-          <input type="email" placeholder="Email" id="loginEmail" required>
-          <input type="password" placeholder="Password" id="loginPassword" required>
-          <button onclick="login()">Sign In</button>
-          <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign up</a></p>
-          <div class="auth-error" id="loginError"></div>
-        </div>
-        <div id="signupForm" class="hidden">
-          <h3>Join Skin Genius</h3>
-          <input type="text" placeholder="Full Name" id="signupName" required>
-          <input type="email" placeholder="Email" id="signupEmail" required>
-          <input type="password" placeholder="Password" id="signupPassword" required>
-          <button onclick="signup()">Create Account</button>
-          <p>Already have an account? <a href="#" onclick="showLoginForm()">Sign in</a></p>
-          <div class="auth-error" id="signupError"></div>
-        </div>
-      </div>
+  <!-- ========================= -->
+  <!-- Minimal Cart Drawer -->
+  <!-- ========================= -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <span class="cart-drawer-title">your bag</span>
+      <button id="close-cart" class="cart-drawer-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer-content">
+      <p class="cart-empty">your bag is empty.</p>
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-drawer-footer">
+      <button class="btn rhode-btn" style="width:100%">checkout</button>
     </div>
   </div>
 
-  <!-- Premium Floating Elements -->
-  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
-  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+  <!-- ========================= -->
+  <!-- Minimal Account Modal -->
+  <!-- ========================= -->
+  <div id="account-modal" class="account-modal">
+    <div class="account-modal-content">
+      <button class="account-modal-close" id="close-account" aria-label="Close">&times;</button>
+      <div class="account-modal-tabs">
+        <button id="tab-signin" class="account-tab active">sign in</button>
+        <button id="tab-signup" class="account-tab">sign up</button>
+      </div>
+      <form id="signin-form" class="account-form">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" class="btn rhode-btn">sign in</button>
+      </form>
+      <form id="signup-form" class="account-form" style="display:none;">
+        <input type="text" placeholder="Name" required autocomplete="name">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="new-password">
+        <button type="submit" class="btn rhode-btn">sign up</button>
+      </form>
+    </div>
+  </div>
 
+  <!-- ========================= -->
+  <!-- Scripts: Cart Drawer, Social Popup, etc. -->
+  <!-- ========================= -->
   <script src="../js/script.js"></script>
+  <script>
+    // Cart drawer open/close logic
+    const openCartBtn = document.getElementById('open-cart');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartDrawer = document.getElementById('cart-drawer');
+    openCartBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      cartDrawer.classList.add('open');
+      document.body.classList.add('cart-open');
+    });
+    closeCartBtn.addEventListener('click', function() {
+      cartDrawer.classList.remove('open');
+      document.body.classList.remove('cart-open');
+    });
+    // Optional: close drawer when clicking outside
+    window.addEventListener('click', function(e) {
+      if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && e.target !== openCartBtn) {
+        cartDrawer.classList.remove('open');
+        document.body.classList.remove('cart-open');
+      }
+    });
+    // Social media coming soon popup at top
+    const socialLinks = document.querySelectorAll('.footer-social .social-link');
+    const comingSoonPopup = document.getElementById('coming-soon-popup');
+    socialLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        comingSoonPopup.style.display = 'block';
+        comingSoonPopup.style.opacity = '1';
+        setTimeout(() => {
+          comingSoonPopup.style.opacity = '0';
+        }, 1800);
+        setTimeout(() => {
+          comingSoonPopup.style.display = 'none';
+        }, 2000);
+      });
+    });
+  </script>
 </body>
 </html> 

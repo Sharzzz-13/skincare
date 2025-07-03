@@ -3,219 +3,482 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Collection - Skin Genius</title>
+  <title>shop - skin genius</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    .rhode-product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5em 2em;
+      margin: 2.5em 0 2em;
+      padding: 0 2em;
+    }
+    .rhode-product-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      padding: 1.5em 1.2em 1.7em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .rhode-product-card img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 9px;
+      margin-bottom: 1.2em;
+    }
+    .rhode-product-info {
+      text-align: center;
+    }
+    .rhode-product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.13em;
+      font-weight: 500;
+      color: #7a5a3a;
+      margin-bottom: 0.22em;
+      display: block;
+    }
+    .rhode-product-desc {
+      color: #b7a99a;
+      font-size: 1em;
+      margin-bottom: 0.35em;
+      display: block;
+    }
+    .rhode-product-price {
+      font-size: 1.07em;
+      font-weight: 500;
+      margin-bottom: 0.8em;
+      display: block;
+    }
+    .product-qty-controls {
+      margin-top: 0.6em;
+    }
+    @media (max-width: 700px) {
+      .rhode-product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.3em 0.8em;
+        padding: 0 0.5em;
+      }
+      .rhode-product-card {
+        max-width: 98vw;
+        padding: 0.9em 0.5em 1.2em;
+      }
+      .rhode-product-card img {
+        width: 95px;
+        height: 95px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Main Menu -->
-  <div class="main-menu" id="mainMenu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="how-to-use.html">How to Use</a></li>
-      <li><a href="results.html">Results</a></li>
-    </ul>
-  </div>
-
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <a href="index.html" class="back-btn">← Back</a>
-      <h1>Skin Genius</h1>
-      <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    </div>
-  </nav>
-
-  <!-- Premium Header -->
-  <header>
-    <div class="container">
-      <h1>Skin Genius</h1>
-      <div class="header-buttons">
-        <button class="header-btn" onclick="showAuthModal()">Sign In</button>
-        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+  <!-- ========================= -->
+  <!-- Minimal Sticky Header -->
+  <!-- ========================= -->
+  <header class="rhode-header">
+    <div class="header-container">
+      <span class="logo">skin genius</span>
+      <nav class="main-nav">
+        <a href="../root/index.html">home</a>
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+      </nav>
+      <div class="header-icons">
+        <a href="#" aria-label="Cart" class="cart-icon" id="open-cart">🛒<span class="cart-count-badge" id="cart-count-badge"></span></a>
+        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤</a>
       </div>
     </div>
   </header>
 
-  <!-- Luxury Products Hero -->
-  <section class="products-hero" style="background-image: url('../images/13.jpg');">
-    <div class="container">
-      <div class="products-hero-content">
-        <h2>Our Signature Collection</h2>
-        <p>Discover our carefully curated range of luxury skincare essentials, each formulated to deliver visible results and elevate your daily routine. From gentle cleansers to potent serums, every product is crafted with the finest ingredients and backed by science.</p>
-        <div class="products-stats">
-          <div class="stat">
-            <span class="stat-number">15+</span>
-            <span class="stat-label">Premium Products</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">98%</span>
-            <span class="stat-label">Customer Satisfaction</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">24/7</span>
-            <span class="stat-label">Expert Support</span>
-          </div>
+  <!-- ========================= -->
+  <!-- Product Grid Section -->
+  <!-- ========================= -->
+  <section class="rhode-product-grid-section">
+    <div class="carousel-title">our collection</div>
+    <div class="rhode-product-grid">
+      <div class="rhode-product-card" data-product-id="1">
+        <img src="../images/1.jpg" alt="product 1">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">radiance serum</span>
+          <span class="rhode-product-desc">brightens and revitalizes</span>
+          <span class="rhode-product-price">₹1,299</span>
+          <div class="product-qty-controls" id="qty-controls-1"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="2">
+        <img src="../images/2.jpg" alt="product 2">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">hydra cream</span>
+          <span class="rhode-product-desc">deep hydration</span>
+          <span class="rhode-product-price">₹1,499</span>
+          <div class="product-qty-controls" id="qty-controls-2"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="3">
+        <img src="../images/3.jpg" alt="product 3">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">purity cleanser</span>
+          <span class="rhode-product-desc">gentle daily cleanse</span>
+          <span class="rhode-product-price">₹1,199</span>
+          <div class="product-qty-controls" id="qty-controls-3"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="4">
+        <img src="../images/4.jpg" alt="product 4">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">vitamin c elixir</span>
+          <span class="rhode-product-desc">brightening boost</span>
+          <span class="rhode-product-price">₹1,799</span>
+          <div class="product-qty-controls" id="qty-controls-4"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="5">
+        <img src="../images/5.jpg" alt="product 5">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">renewal mask</span>
+          <span class="rhode-product-desc">overnight renewal</span>
+          <span class="rhode-product-price">₹1,599</span>
+          <div class="product-qty-controls" id="qty-controls-5"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="6">
+        <img src="../images/6.jpg" alt="product 6">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">soothe balm</span>
+          <span class="rhode-product-desc">calms & nourishes</span>
+          <span class="rhode-product-price">₹999</span>
+          <div class="product-qty-controls" id="qty-controls-6"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="7">
+        <img src="../images/7.jpg" alt="product 7">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">clarity toner</span>
+          <span class="rhode-product-desc">refines & balances</span>
+          <span class="rhode-product-price">₹1,099</span>
+          <div class="product-qty-controls" id="qty-controls-7"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="8">
+        <img src="../images/8.jpg" alt="product 8">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">dew drops</span>
+          <span class="rhode-product-desc">instant glow</span>
+          <span class="rhode-product-price">₹1,399</span>
+          <div class="product-qty-controls" id="qty-controls-8"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="9">
+        <img src="../images/9.jpg" alt="product 9">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">barrier cream</span>
+          <span class="rhode-product-desc">protects & restores</span>
+          <span class="rhode-product-price">₹1,299</span>
+          <div class="product-qty-controls" id="qty-controls-9"></div>
+        </div>
+      </div>
+      <div class="rhode-product-card" data-product-id="10">
+        <img src="../images/10.jpg" alt="product 10">
+        <div class="rhode-product-info">
+          <span class="rhode-product-name">night repair</span>
+          <span class="rhode-product-desc">overnight recovery</span>
+          <span class="rhode-product-price">₹1,899</span>
+          <div class="product-qty-controls" id="qty-controls-10"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Premium Products Grid -->
-  <section class="products-section">
-    <div class="container">
-      <div class="products-header">
-        <h3>Shop Our Collection</h3>
-        <p>Each product is designed to work harmoniously with your skin, delivering transformative results you can see and feel.</p>
+  <!-- ========================= -->
+  <!-- Minimal Footer -->
+  <!-- ========================= -->
+  <footer class="rhode-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+        <a href="../root/faq.html">faq</a>
+        <a href="../root/privacy-policy.html">privacy</a>
+        <a href="../root/terms-of-service.html">terms</a>
       </div>
-      <div class="product-list" id="product-list">
-        <!-- Products will be loaded dynamically -->
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-link">instagram</a>
+        <a href="#" aria-label="Youtube" class="social-link">youtube</a>
+        <a href="#" aria-label="Tiktok" class="social-link">tiktok</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Premium Product Categories -->
-  <section class="categories-section">
-    <div class="container">
-      <h3>Shop by Category</h3>
-      <div class="categories-grid">
-        <div class="category-card">
-          <div class="category-icon">🧴</div>
-          <h4>Cleansers</h4>
-          <p>Gentle yet effective formulas that remove impurities without stripping your skin's natural moisture.</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">💧</div>
-          <h4>Serums</h4>
-          <p>Concentrated treatments that target specific concerns and deliver powerful active ingredients.</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">🧴</div>
-          <h4>Moisturizers</h4>
-          <p>Hydrating formulas that lock in moisture and create a protective barrier for your skin.</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">🛡️</div>
-          <h4>Sunscreen</h4>
-          <p>Broad-spectrum protection that shields your skin from harmful UV rays while feeling weightless.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium Testimonials -->
-  <section class="testimonials-section">
-    <div class="container">
-      <h3>What Our Customers Say</h3>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"The Vitamin C serum has completely transformed my skin. I've never received so many compliments on my complexion!"</p>
-          <div class="testimonial-author">- Maria S., Verified Customer</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"Finally found a cleanser that doesn't leave my skin feeling tight. The gentle formula is perfect for my sensitive skin."</p>
-          <div class="testimonial-author">- Jennifer L., Beauty Blogger</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"The retinol cream has reduced my fine lines significantly. I can't believe the results in just 4 weeks!"</p>
-          <div class="testimonial-author">- Dr. Amanda K., Dermatologist</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium Newsletter -->
-  <section class="newsletter-section">
-    <div class="container">
-      <h2>Stay Updated</h2>
-      <p>Be the first to know about new products, exclusive offers, and expert skincare tips.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit" class="btn">Subscribe</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Luxury Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Skin Genius</h3>
-          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">Customer Care</a></li>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Twitter">🐦</a>
-            <a href="#" aria-label="YouTube">📺</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-      </div>
+      <div id="coming-soon-popup" class="coming-soon-popup" style="display:none;">coming soon</div>
+      <div class="footer-copy">&copy; 2024 skin genius. all rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Premium Auth Modal -->
-  <div class="auth-modal" id="authModal">
-    <div class="auth-modal-content">
-      <button class="close-auth" onclick="hideAuthModal()">&times;</button>
-      <div id="authForms">
-        <div id="loginForm">
-          <h3>Welcome Back</h3>
-          <input type="email" placeholder="Email" id="loginEmail" required>
-          <input type="password" placeholder="Password" id="loginPassword" required>
-          <button onclick="login()">Sign In</button>
-          <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign up</a></p>
-          <div class="auth-error" id="loginError"></div>
-        </div>
-        <div id="signupForm" class="hidden">
-          <h3>Join Skin Genius</h3>
-          <input type="text" placeholder="Full Name" id="signupName" required>
-          <input type="email" placeholder="Email" id="signupEmail" required>
-          <input type="password" placeholder="Password" id="signupPassword" required>
-          <button onclick="signup()">Create Account</button>
-          <p>Already have an account? <a href="#" onclick="showLoginForm()">Sign in</a></p>
-          <div class="auth-error" id="signupError"></div>
-        </div>
-      </div>
+  <!-- ========================= -->
+  <!-- Minimal Cart Drawer -->
+  <!-- ========================= -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <span class="cart-drawer-title">your bag</span>
+      <button id="close-cart" class="cart-drawer-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer-content">
+      <p class="cart-empty">your bag is empty.</p>
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-drawer-footer">
+      <button class="btn rhode-btn" style="width:100%">checkout</button>
     </div>
   </div>
 
-  <!-- Premium Floating Elements -->
-  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
-  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+  <!-- ========================= -->
+  <!-- Minimal Account Modal -->
+  <!-- ========================= -->
+  <div id="account-modal" class="account-modal">
+    <div class="account-modal-content">
+      <button class="account-modal-close" id="close-account" aria-label="Close">&times;</button>
+      <div class="account-modal-tabs">
+        <button id="tab-signin" class="account-tab active">sign in</button>
+        <button id="tab-signup" class="account-tab">sign up</button>
+      </div>
+      <form id="signin-form" class="account-form">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" class="btn rhode-btn">sign in</button>
+      </form>
+      <form id="signup-form" class="account-form" style="display:none;">
+        <input type="text" placeholder="Name" required autocomplete="name">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="new-password">
+        <button type="submit" class="btn rhode-btn">sign up</button>
+      </form>
+    </div>
+  </div>
 
-  <script src="../js/products.js"></script>
+  <!-- ========================= -->
+  <!-- Minimal Checkout Modal -->
+  <!-- ========================= -->
+  <div id="checkout-modal" class="checkout-modal" style="display:none;">
+    <div class="checkout-modal-content">
+      <button class="checkout-modal-close" id="close-checkout" aria-label="Close">&times;</button>
+      <h2 class="checkout-title">order summary</h2>
+      <div id="checkout-summary"></div>
+      <button class="btn rhode-btn" id="place-order-btn" style="width:100%;margin-top:1em;">place order</button>
+    </div>
+  </div>
+
+  <!-- ========================= -->
+  <!-- Scripts: Cart, Badge, Modal, etc. -->
+  <!-- ========================= -->
   <script src="../js/script.js"></script>
+  <script src="../js/cart.js"></script>
+  <script>
+    // Cart drawer open/close logic
+    const openCartBtn = document.getElementById('open-cart');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartDrawer = document.getElementById('cart-drawer');
+    openCartBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      cartDrawer.classList.add('open');
+      document.body.classList.add('cart-open');
+    });
+    closeCartBtn.addEventListener('click', function() {
+      cartDrawer.classList.remove('open');
+      document.body.classList.remove('cart-open');
+    });
+    // Optional: close drawer when clicking outside
+    window.addEventListener('click', function(e) {
+      if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && e.target !== openCartBtn) {
+        cartDrawer.classList.remove('open');
+        document.body.classList.remove('cart-open');
+      }
+    });
+    // Social media coming soon popup at top
+    const socialLinks = document.querySelectorAll('.footer-social .social-link');
+    const comingSoonPopup = document.getElementById('coming-soon-popup');
+    socialLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        comingSoonPopup.style.display = 'block';
+        comingSoonPopup.style.opacity = '1';
+        setTimeout(() => {
+          comingSoonPopup.style.opacity = '0';
+        }, 1800);
+        setTimeout(() => {
+          comingSoonPopup.style.display = 'none';
+        }, 2000);
+      });
+    });
+    // Minimal plus/minus controls for product cards (shop page)
+    function renderProductQtyControls() {
+      const ids = ['1','2','3','4','5','6','7','8','9','10'];
+      ids.forEach(id => {
+        const el = document.getElementById('qty-controls-' + id);
+        if (!el) return;
+        const qty = window.getCartQuantity ? getCartQuantity(id) : 0;
+        if (qty < 1) {
+          el.innerHTML = `<button class='btn rhode-btn' style='min-width:90px' onclick="addToCart('${id}')">add to bag</button>`;
+        } else {
+          el.innerHTML = `
+            <button onclick="updateCartQuantity('${id}', -1)" style="background:none;border:none;font-size:1.1em;color:#7a5a3a;padding:0 0.5em;">-</button>
+            <span style="min-width:1.5em;display:inline-block;text-align:center;">${qty}</span>
+            <button onclick="updateCartQuantity('${id}', 1)" style="background:none;border:none;font-size:1.1em;color:#7a5a3a;padding:0 0.5em;">+</button>
+          `;
+        }
+      });
+    }
+    window.renderProductQtyControls = renderProductQtyControls;
+    // Patch cart functions to also update product controls
+    const _origAddToCart = window.addToCart;
+    window.addToCart = function(pid) { _origAddToCart(pid); renderProductQtyControls(); };
+    const _origUpdateCartQuantity = window.updateCartQuantity;
+    window.updateCartQuantity = function(pid, ch) { _origUpdateCartQuantity(pid, ch); renderProductQtyControls(); };
+    document.addEventListener('DOMContentLoaded', renderProductQtyControls);
+    // Minimal checkout modal logic (shop page)
+    (function() {
+      const checkoutBtn = document.querySelector('.cart-drawer-footer .btn.rhode-btn');
+      if (!checkoutBtn) return;
+      const checkoutModal = document.getElementById('checkout-modal');
+      const closeCheckoutBtn = document.getElementById('close-checkout');
+      const checkoutSummary = document.getElementById('checkout-summary');
+      const placeOrderBtn = document.getElementById('place-order-btn');
+      // Open checkout modal
+      checkoutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const user = getCurrentUser && getCurrentUser();
+        if (!user) {
+          document.getElementById('account-modal').classList.add('open');
+          setTimeout(() => {
+            const info = document.getElementById('account-user-info');
+            if (info) info.innerHTML = '<div style="color:#7a5a3a;margin-bottom:1em;">please sign in to checkout</div>' + info.innerHTML;
+          }, 100);
+          return;
+        }
+        renderCheckoutSummary();
+        checkoutModal.style.display = 'flex';
+      });
+      // Close checkout modal
+      closeCheckoutBtn.addEventListener('click', function() {
+        checkoutModal.style.display = 'none';
+      });
+      // Render order summary with address picker
+      window.renderCheckoutSummary = function() {
+        const user = getCurrentUser && getCurrentUser();
+        if (!user) return;
+        const users = JSON.parse(localStorage.getItem('users') || '{}');
+        const userData = users[user.email] || {};
+        const addresses = userData.addresses || [];
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (!cart.length) {
+          checkoutSummary.innerHTML = '<p>Your bag is empty.</p>';
+          return;
+        }
+        const counts = {};
+        cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
+        let html = '<ul style="list-style:none;padding:0;">';
+        let subtotal = 0;
+        Object.entries(counts).forEach(([id, qty]) => {
+          const item = window.productData.find(p => p.id === id);
+          if (!item) return;
+          const itemTotal = item.price * qty;
+          subtotal += itemTotal;
+          html += `<li style="margin-bottom:0.7em;">${item.name} × ${qty} <span style="float:right;">₹${itemTotal}</span></li>`;
+        });
+        html += `</ul><div style="margin-top:1em;font-weight:500;">Total: ₹${subtotal}</div>`;
+        // Address picker
+        html += '<div style="margin:1.5em 0 0.5em;font-weight:500;">shipping address</div>';
+        if (addresses.length) {
+          html += '<select id="address-picker" style="width:100%;padding:0.5em 0.7em;margin-bottom:1em;">';
+          addresses.forEach((addr, i) => {
+            html += `<option value="${i}">${addr.label || addr.line1 + ', ' + addr.city}</option>`;
+          });
+          html += '</select>';
+        } else {
+          html += '<div style="color:#b7a99a;margin-bottom:1em;">no addresses saved</div>';
+        }
+        html += '<button id="add-address-btn" class="btn rhode-btn" style="width:100%;margin-bottom:1em;">add new address</button>';
+        checkoutSummary.innerHTML = html;
+        document.getElementById('add-address-btn').onclick = function() {
+          showAddressForm(user.email);
+        };
+      }
+      // Show address form
+      function showAddressForm(email) {
+        const formHtml = `
+          <form id="address-form" style="margin:1em 0 0.5em;">
+            <input type="text" placeholder="Label (e.g. Home, Work)" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="Address Line 1" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="City" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="State" style="width:100%;margin-bottom:0.7em;" required />
+            <input type="text" placeholder="Pincode" style="width:100%;margin-bottom:0.7em;" required />
+            <button type="submit" class="btn rhode-btn" style="width:100%;">save address</button>
+          </form>
+        `;
+        checkoutSummary.innerHTML += formHtml;
+        const form = document.getElementById('address-form');
+        form.onsubmit = function(e) {
+          e.preventDefault();
+          const [label, line1, city, state, pincode] = Array.from(form.querySelectorAll('input')).map(i => i.value.trim());
+          let users = JSON.parse(localStorage.getItem('users') || '{}');
+          if (!users[email].addresses) users[email].addresses = [];
+          users[email].addresses.push({ label, line1, city, state, pincode });
+          localStorage.setItem('users', JSON.stringify(users));
+          renderCheckoutSummary();
+        };
+      }
+      // Place order
+      placeOrderBtn.addEventListener('click', function() {
+        const user = getCurrentUser && getCurrentUser();
+        if (!user) {
+          document.getElementById('account-modal').classList.add('open');
+          return;
+        }
+        const users = JSON.parse(localStorage.getItem('users') || '{}');
+        const userData = users[user.email] || {};
+        const addresses = userData.addresses || [];
+        let address = null;
+        if (addresses.length) {
+          const picker = document.getElementById('address-picker');
+          address = addresses[picker ? picker.value : 0];
+        }
+        if (!address) {
+          alert('Please add and select an address to place your order.');
+          return;
+        }
+        // Gather cart and product data
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (!cart.length) return;
+        const counts = {};
+        cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
+        const items = [];
+        let total = 0;
+        Object.entries(counts).forEach(([id, qty]) => {
+          const item = window.productData.find(p => p.id === id);
+          if (!item) return;
+          const itemTotal = item.price * qty;
+          total += itemTotal;
+          items.push({ id, name: item.name, qty, total: itemTotal });
+        });
+        // Generate order number and date
+        const orderNumber = Math.floor(100000 + Math.random() * 900000);
+        const date = new Date().toLocaleString();
+        // Store order in localStorage
+        const order = { orderNumber, date, items, total, address };
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        // Clear cart and update UI
+        localStorage.removeItem('cart');
+        if (window.renderCartDrawer) renderCartDrawer();
+        if (window.renderProductQtyControls) renderProductQtyControls();
+        // Redirect to thank you page
+        window.location.href = 'thankyou.html?order=' + orderNumber;
+      });
+    })();
+  </script>
 </body>
 </html> 

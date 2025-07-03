@@ -6,75 +6,257 @@
   <title>How to Use - Skin Genius</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
 </head>
 <body>
+  <!-- ========================= -->
+  <!-- Premium Header -->
+  <!-- ========================= -->
   <header>
     <div class="container">
-      <button id="backBtn" class="header-btn back-btn">← Back</button>
       <h1>Skin Genius</h1>
-      <button class="header-btn" onclick="toggleMenu()">Menu</button>
+      <div class="header-buttons">
+        <button class="header-btn" onclick="showAuthModal()">Sign In</button>
+        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+      </div>
     </div>
   </header>
 
-  <section class="video-section">
+  <!-- ========================= -->
+  <!-- Rhode Hero -->
+  <!-- ========================= -->
+  <section class="rhode-hero-bg rhode-about-bg">
+    <div class="rhode-hero-content">
+      <h2>How To Use</h2>
+      <p>Simple steps. Real results. Your best skin, made easy.</p>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Video Tutorial Section -->
+  <!-- ========================= -->
+  <section class="products-section">
     <div class="container">
-      <h2>How to Use Our Products</h2>
-      <div class="video-box">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/eEanU3wxMV4" frameborder="0" allowfullscreen></iframe>
+      <h2>Video Tutorial</h2>
+      <p>Watch our expert demonstrate the perfect skincare routine using Skin Genius products.</p>
+      
+      <div class="video-container" style="max-width: 800px; margin: 3rem auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);">
+        <iframe 
+          width="100%" 
+          height="450" 
+          src="https://www.youtube.com/embed/eEanU3wxMV4" 
+          frameborder="0" 
+          allowfullscreen
+          style="display: block;">
+        </iframe>
       </div>
-      <div style="max-width:800px;margin:30px auto;text-align:center;">
-        <h3 style="color:#ff8c94;margin-bottom:20px;">Skincare Routine Guide</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:30px;">
-          <div style="background:#fff0f2;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(255,140,148,0.08);">
-            <h4 style="color:#ff8c94;margin-bottom:10px;">Step 1: Cleanse</h4>
-            <p>Start with our gentle cleanser to remove dirt and impurities. Use lukewarm water and massage in circular motions.</p>
-          </div>
-          <div style="background:#fff0f2;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(255,140,148,0.08);">
-            <h4 style="color:#ff8c94;margin-bottom:10px;">Step 2: Tone</h4>
-            <p>Apply our refreshing toner to balance your skin's pH and prepare it for better product absorption.</p>
-          </div>
-          <div style="background:#fff0f2;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(255,140,148,0.08);">
-            <h4 style="color:#ff8c94;margin-bottom:10px;">Step 3: Treat</h4>
-            <p>Apply targeted treatments like serums and eye creams for specific skin concerns.</p>
-          </div>
-          <div style="background:#fff0f2;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(255,140,148,0.08);">
-            <h4 style="color:#ff8c94;margin-bottom:10px;">Step 4: Moisturize</h4>
-            <p>Lock in hydration with our daily moisturizer to keep your skin soft and supple.</p>
-          </div>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Skincare Routine Guide -->
+  <!-- ========================= -->
+  <section class="about-section">
+    <div class="container">
+      <h2>Complete Skincare Routine</h2>
+      <p>Follow this step-by-step guide to achieve your best skin ever. Consistency is key to seeing real results.</p>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🧴</div>
+          <h3>Step 1: Cleanse</h3>
+          <p>Start with our gentle cleanser to remove dirt, oil, and impurities. Use lukewarm water and massage in circular motions for 30-60 seconds. Rinse thoroughly and pat dry.</p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon">💧</div>
+          <h3>Step 2: Tone</h3>
+          <p>Apply our refreshing toner to balance your skin's pH and prepare it for better product absorption. Use a cotton pad or your hands, avoiding the eye area.</p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon">✨</div>
+          <h3>Step 3: Treat</h3>
+          <p>Apply targeted treatments like serums and eye creams for specific skin concerns. Start with the thinnest consistency and work your way up to thicker products.</p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon">🧴</div>
+          <h3>Step 4: Moisturize</h3>
+          <p>Lock in hydration with our daily moisturizer to keep your skin soft and supple. Apply while your skin is still slightly damp for better absorption.</p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon">🛡️</div>
+          <h3>Step 5: Protect (AM)</h3>
+          <p>Finish your morning routine with broad-spectrum sunscreen to shield your skin from harmful UV rays. Reapply every 2 hours if you're outdoors.</p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon">🌙</div>
+          <h3>Step 6: Night Care (PM)</h3>
+          <p>Use our night cream or retinol products in the evening for skin repair and regeneration. These products work while you sleep for optimal results.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <button id="backToTopBtn" title="Back to Top" style="display:none;">↑</button>
+  <!-- ========================= -->
+  <!-- Product-Specific Guides -->
+  <!-- ========================= -->
+  <section class="products-section">
+    <div class="container">
+      <h2>Product-Specific Instructions</h2>
+      <p>Learn how to use each product in our collection for the best possible results.</p>
+      
+      <div class="product-list">
+        <div class="product">
+          <img src="../images/1.jpg" alt="Gentle Cleanser">
+          <h3>Gentle Cleanser</h3>
+          <p>Use morning and evening. Apply to damp skin, massage gently, and rinse with lukewarm water.</p>
+          <strong>Best for:</strong> All skin types
+        </div>
+        
+        <div class="product">
+          <img src="../images/2.jpg" alt="Vitamin C Serum">
+          <h3>Vitamin C Serum</h3>
+          <p>Apply in the morning after cleansing. Use 2-3 drops and gently press into skin. Follow with moisturizer.</p>
+          <strong>Best for:</strong> Brightening and anti-aging
+        </div>
+        
+        <div class="product">
+          <img src="../images/3.jpg" alt="Hydrating Moisturizer">
+          <h3>Hydrating Moisturizer</h3>
+          <p>Apply morning and evening after serums. Use a pea-sized amount and gently massage into skin.</p>
+          <strong>Best for:</strong> Hydration and barrier repair
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Floating Menu -->
+  <!-- ========================= -->
+  <!-- Tips and Tricks -->
+  <!-- ========================= -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>Expert Tips & Tricks</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">💡</div>
+          <p>"Always patch test new products on your inner arm before applying to your face. This helps identify any potential reactions."</p>
+          <div class="testimonial-author">- Dr. Sarah Chen, Dermatologist</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">💡</div>
+          <p>"Less is more! Start with a small amount of product and build up if needed. This prevents waste and potential irritation."</p>
+          <div class="testimonial-author">- Emma Rodriguez, Skincare Expert</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">💡</div>
+          <p>"Be patient with your skincare routine. Most products take 4-6 weeks to show visible results. Consistency is key!"</p>
+          <div class="testimonial-author">- Dr. Michael Kim, Cosmetic Chemist</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Premium Newsletter -->
+  <!-- ========================= -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-icon">✨</div>
+      <h2>Get Skincare Tips Delivered</h2>
+      <p>Subscribe to receive weekly skincare tips, product updates, and exclusive offers. Join our community of skincare enthusiasts.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">
+          <span>Subscribe</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </form>
+      <div class="newsletter-benefits">
+        <div class="benefit-item">
+          <span class="benefit-icon">🎁</span>
+          <span>Exclusive Offers</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">💡</span>
+          <span>Expert Tips</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">✨</span>
+          <span>New Products</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Premium Menu Overlay -->
+  <!-- ========================= -->
   <div class="main-menu" id="mainMenu">
-    <button class="close-menu" onclick="toggleMenu()">×</button>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="products.html">Products</a></li>
-      <li><a href="about.html">About Us</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="how-to-use.html">How to Use</a></li>
       <li><a href="results.html">Results</a></li>
-      <li><a href="cart.html">Cart</a></li>
     </ul>
   </div>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Skin Genius. All rights reserved.</p>
+  <!-- ========================= -->
+  <!-- Premium Auth Modal -->
+  <!-- ========================= -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal-content">
+      <button class="close-auth" onclick="hideAuthModal()">&times;</button>
+      <div id="authForms">
+        <div id="loginForm">
+          <div class="auth-header">
+            <div class="auth-icon">🌟</div>
+            <h3>Welcome Back</h3>
+            <p class="auth-subtitle">Continue your skincare journey with us</p>
+          </div>
+          <input type="email" placeholder="Email address" id="loginEmail" required>
+          <input type="password" placeholder="Password" id="loginPassword" required>
+          <button onclick="login()">
+            <span>Sign In</span>
+            <span class="btn-icon">→</span>
+          </button>
+          <p>Don't have an account? <a href="#" onclick="showSignupForm()">Create one now</a></p>
+          <div class="auth-error" id="loginError"></div>
+        </div>
+        <div id="signupForm" style="display: none;">
+          <div class="auth-header">
+            <div class="auth-icon">✨</div>
+            <h3>Create Account</h3>
+            <p class="auth-subtitle">Join our community of skincare enthusiasts</p>
+          </div>
+          <input type="text" placeholder="Full name" id="signupName" required>
+          <input type="email" placeholder="Email address" id="signupEmail" required>
+          <input type="password" placeholder="Create password" id="signupPassword" required>
+          <button onclick="signup()">
+            <span>Sign Up</span>
+            <span class="btn-icon">→</span>
+          </button>
+          <p>Already have an account? <a href="#" onclick="showLoginForm()">Sign in here</a></p>
+          <div class="auth-error" id="signupError"></div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
 
+  <!-- ========================= -->
+  <!-- Premium Floating Elements -->
+  <!-- ========================= -->
+  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
+  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+  <!-- ========================= -->
+  <!-- Scripts: Page Logic -->
+  <!-- ========================= -->
   <script src="../js/script.js"></script>
-  <script>
-    // Back button functionality
-    const backBtn = document.getElementById('backBtn');
-    backBtn.onclick = () => {
-      window.location.href = 'index.html';
-    };
-  </script>
 </body>
 </html> 

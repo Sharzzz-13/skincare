@@ -5,298 +5,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FAQ - Skin Genius</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Premium Header -->
-  <header>
-    <div class="container">
-      <h1>Skin Genius</h1>
-      <div class="header-buttons">
-        <button class="header-btn" onclick="window.location.href='index.html'">← Back</button>
-        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+  <!-- ========================= -->
+  <!-- Minimal Sticky Header -->
+  <!-- ========================= -->
+  <header class="rhode-header">
+    <div class="header-container">
+      <span class="logo">skin genius</span>
+      <nav class="main-nav">
+        <a href="../root/index.html">home</a>
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+      </nav>
+      <div class="header-icons">
+        <a href="#" aria-label="Cart" class="cart-icon" id="open-cart">🛒</a>
+        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤</a>
       </div>
     </div>
   </header>
 
-  <!-- FAQ Hero -->
-  <section class="hero" style="background-image: url('../images/skin3.jpg');">
-    <div class="hero-content">
-      <h2>Frequently Asked Questions</h2>
-      <p>Find answers to the most common questions about Skin Genius products and services.</p>
+  <!-- ========================= -->
+  <!-- Simple Hero Section (no video) -->
+  <!-- ========================= -->
+  <section class="rhode-hero-simple">
+    <div class="rhode-hero-content">
+      <h1 class="hero-title">faq</h1>
+      <p class="hero-desc">your questions, answered. everything you need to know about skin genius.</p>
     </div>
   </section>
 
-  <!-- FAQ Content -->
-  <section class="about-section">
-    <div class="container">
-      <div class="faq-container">
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>What skin types are your products suitable for?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Our products are formulated to be suitable for all skin types - normal, dry, oily, combination, and sensitive skin. Each product is dermatologically tested and contains gentle, non-irritating ingredients. We recommend checking the product descriptions for specific skin type recommendations.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>How long does shipping take?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Standard delivery takes 3-5 business days and costs ₹99 (free on orders above ₹999). Express delivery takes 1-2 business days for ₹199. Same-day delivery is available in select metro cities for ₹299 if ordered before 2 PM.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>What is your return policy?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>We offer a 30-day return window for all unused products in their original packaging. Return shipping is free, and you'll receive a full refund to your original payment method within 5-7 business days.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>Are your products cruelty-free?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Yes! All Skin Genius products are cruelty-free and never tested on animals. We're committed to ethical beauty practices and sustainable packaging.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>How do I track my order?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>You'll receive tracking updates via SMS and email once your order ships. You can also track your order in real-time through your account on our website or by using the tracking number provided.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>Do you ship internationally?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Currently, we ship across India. We're working on expanding our international shipping options. Please check back soon for updates on international delivery.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>How do I choose the right products for my skin?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>We recommend starting with our basic skincare routine: cleanser, toner, and moisturizer. For personalized recommendations, you can contact our customer care team or take our skin assessment quiz on our website.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>What payment methods do you accept?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>We accept all major credit/debit cards, UPI, net banking, and digital wallets including Paytm, PhonePe, and Google Pay. We also offer EMI options on orders above ₹1000.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>Are your products safe for sensitive skin?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Yes, our products are formulated with sensitive skin in mind. They're free from harsh chemicals, fragrances, and common irritants. However, we always recommend doing a patch test before full application.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <h3>How can I contact customer support?</h3>
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>You can reach us via email at skingenius@gmail.com, call us at +91 97315 87324, or use our live chat feature on the website. Our customer care team is available Monday to Friday, 9 AM - 6 PM IST.</p>
-          </div>
-        </div>
+  <!-- ========================= -->
+  <!-- Minimal FAQ Section -->
+  <!-- ========================= -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">What skin types are your products suitable for?</button>
+        <div class="faq-answer"><p>Our products are formulated to be suitable for all skin types - normal, dry, oily, combination, and sensitive skin. Each product is dermatologically tested and contains gentle, non-irritating ingredients. We recommend checking the product descriptions for specific skin type recommendations.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How long does shipping take?</button>
+        <div class="faq-answer"><p>Standard delivery takes 3-5 business days and costs ₹99 (free on orders above ₹999). Express delivery takes 1-2 business days for ₹199. Same-day delivery is available in select metro cities for ₹299 if ordered before 2 PM.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What is your return policy?</button>
+        <div class="faq-answer"><p>We offer a 30-day return window for all unused products in their original packaging. Return shipping is free, and you'll receive a full refund to your original payment method within 5-7 business days.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Are your products cruelty-free?</button>
+        <div class="faq-answer"><p>Yes! All Skin Genius products are cruelty-free and never tested on animals. We're committed to ethical beauty practices and sustainable packaging.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How do I track my order?</button>
+        <div class="faq-answer"><p>You'll receive tracking updates via SMS and email once your order ships. You can also track your order in real-time through your account on our website or by using the tracking number provided.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do you ship internationally?</button>
+        <div class="faq-answer"><p>Currently, we ship across India. We're working on expanding our international shipping options. Please check back soon for updates on international delivery.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How do I choose the right products for my skin?</button>
+        <div class="faq-answer"><p>We recommend starting with our basic skincare routine: cleanser, toner, and moisturizer. For personalized recommendations, you can contact our customer care team or take our skin assessment quiz on our website.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What payment methods do you accept?</button>
+        <div class="faq-answer"><p>We accept all major credit/debit cards, UPI, net banking, and digital wallets including Paytm, PhonePe, and Google Pay. We also offer EMI options on orders above ₹1000.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Are your products safe for sensitive skin?</button>
+        <div class="faq-answer"><p>Yes, our products are formulated with sensitive skin in mind. They're free from harsh chemicals, fragrances, and common irritants. However, we always recommend doing a patch test before full application.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How can I contact customer support?</button>
+        <div class="faq-answer"><p>You can reach us via email at skingenius@gmail.com, call us at +91 97315 87324, or use our live chat feature on the website. Our customer care team is available Monday to Friday, 9 AM - 6 PM IST.</p></div>
       </div>
     </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <div class="container">
-      <h2>Still Have Questions?</h2>
+    <div class="faq-contact-cta">
+      <h2>still have questions?</h2>
       <p>Can't find what you're looking for? Our customer care team is here to help!</p>
-      <div class="text-center mt-2">
-        <a href="customer-care.html" class="btn">Contact Customer Care</a>
-      </div>
+      <a href="customer-care.html" class="btn rhode-btn">contact customer care</a>
     </div>
   </section>
 
-  <!-- Luxury Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Skin Genius</h3>
-          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="products.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="how-to-use.html">How to Use</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="customer-care.html">Customer Care</a></li>
-            <li><a href="shipping-info.html">Shipping Info</a></li>
-            <li><a href="returns.html">Returns</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div class="social-links">
-            <a href="javascript:void(0)" onclick="showComingSoon('Instagram')" aria-label="Instagram">📷</a>
-            <a href="javascript:void(0)" onclick="showComingSoon('Facebook')" aria-label="Facebook">📘</a>
-            <a href="javascript:void(0)" onclick="showComingSoon('Twitter')" aria-label="Twitter">🐦</a>
-            <a href="javascript:void(0)" onclick="showComingSoon('YouTube')" aria-label="YouTube">📺</a>
-          </div>
-        </div>
+  <!-- ========================= -->
+  <!-- Minimal Footer -->
+  <!-- ========================= -->
+  <footer class="rhode-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+        <a href="../root/faq.html">faq</a>
+        <a href="../root/privacy-policy.html">privacy</a>
+        <a href="../root/terms-of-service.html">terms</a>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-link">instagram</a>
+        <a href="#" aria-label="Youtube" class="social-link">youtube</a>
+        <a href="#" aria-label="Tiktok" class="social-link">tiktok</a>
       </div>
+      <div id="coming-soon-popup" class="coming-soon-popup" style="display:none;">coming soon</div>
+      <div class="footer-copy">&copy; 2024 skin genius. all rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Premium Menu Overlay -->
-  <div class="main-menu" id="mainMenu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="how-to-use.html">How to Use</a></li>
-      <li><a href="results.html">Results</a></li>
-    </ul>
+  <!-- ========================= -->
+  <!-- Minimal Cart Drawer -->
+  <!-- ========================= -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <span class="cart-drawer-title">your bag</span>
+      <button id="close-cart" class="cart-drawer-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer-content">
+      <p class="cart-empty">your bag is empty.</p>
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-drawer-footer">
+      <button class="btn rhode-btn" style="width:100%">checkout</button>
+    </div>
   </div>
 
-  <!-- Premium Floating Elements -->
-  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
-  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+  <!-- ========================= -->
+  <!-- Minimal Account Modal -->
+  <!-- ========================= -->
+  <div id="account-modal" class="account-modal">
+    <div class="account-modal-content">
+      <button class="account-modal-close" id="close-account" aria-label="Close">&times;</button>
+      <div class="account-modal-tabs">
+        <button id="tab-signin" class="account-tab active">sign in</button>
+        <button id="tab-signup" class="account-tab">sign up</button>
+      </div>
+      <form id="signin-form" class="account-form">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" class="btn rhode-btn">sign in</button>
+      </form>
+      <form id="signup-form" class="account-form" style="display:none;">
+        <input type="text" placeholder="Name" required autocomplete="name">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="new-password">
+        <button type="submit" class="btn rhode-btn">sign up</button>
+      </form>
+    </div>
+  </div>
 
+  <!-- ========================= -->
+  <!-- Scripts: Cart Drawer, Social Popup, FAQ Accordion -->
+  <!-- ========================= -->
   <script src="../js/script.js"></script>
   <script>
-    // FAQ toggle functionality
-    function toggleFAQ(element) {
-      const faqItem = element.parentElement;
-      const answer = faqItem.querySelector('.faq-answer');
-      const toggle = element.querySelector('.faq-toggle');
-      
-      if (faqItem.classList.contains('active')) {
-        faqItem.classList.remove('active');
-        answer.style.maxHeight = '0';
-        toggle.textContent = '+';
-      } else {
-        // Close all other FAQ items
-        document.querySelectorAll('.faq-item').forEach(item => {
-          item.classList.remove('active');
-          item.querySelector('.faq-answer').style.maxHeight = '0';
-          item.querySelector('.faq-toggle').textContent = '+';
-        });
-        
-        // Open current FAQ item
-        faqItem.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        toggle.textContent = '−';
+    // Cart drawer open/close logic
+    const openCartBtn = document.getElementById('open-cart');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartDrawer = document.getElementById('cart-drawer');
+    openCartBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      cartDrawer.classList.add('open');
+      document.body.classList.add('cart-open');
+    });
+    closeCartBtn.addEventListener('click', function() {
+      cartDrawer.classList.remove('open');
+      document.body.classList.remove('cart-open');
+    });
+    // Optional: close drawer when clicking outside
+    window.addEventListener('click', function(e) {
+      if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && e.target !== openCartBtn) {
+        cartDrawer.classList.remove('open');
+        document.body.classList.remove('cart-open');
       }
-    }
-
-    // Social media coming soon function
-    function showComingSoon(platform) {
-      alert(`${platform} profile coming soon! Follow us for updates on skincare tips and exclusive offers.`);
-    }
+    });
+    // Social media coming soon popup at top
+    const socialLinks = document.querySelectorAll('.footer-social .social-link');
+    const comingSoonPopup = document.getElementById('coming-soon-popup');
+    socialLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        comingSoonPopup.style.display = 'block';
+        comingSoonPopup.style.opacity = '1';
+        setTimeout(() => {
+          comingSoonPopup.style.opacity = '0';
+        }, 1800);
+        setTimeout(() => {
+          comingSoonPopup.style.display = 'none';
+        }, 2000);
+      });
+    });
+    // Minimal FAQ accordion logic
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+          this.classList.remove('open');
+        } else {
+          document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = null);
+          document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          this.classList.add('open');
+        }
+      });
+    });
   </script>
-
-  <style>
-    .faq-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .faq-item {
-      margin-bottom: 1rem;
-      border: 1px solid var(--light-pink);
-      border-radius: 10px;
-      overflow: hidden;
-      background: white;
-      box-shadow: var(--shadow-soft);
-    }
-    
-    .faq-question {
-      padding: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(135deg, var(--light-pink), var(--pink));
-      transition: all 0.3s ease;
-    }
-    
-    .faq-question:hover {
-      background: linear-gradient(135deg, var(--pink), var(--deep-pink));
-    }
-    
-    .faq-question h3 {
-      margin: 0;
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-    
-    .faq-toggle {
-      font-size: 1.5rem;
-      color: white;
-      font-weight: bold;
-      transition: transform 0.3s ease;
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      background: white;
-    }
-    
-    .faq-answer p {
-      padding: 1.5rem;
-      margin: 0;
-      line-height: 1.6;
-      color: var(--text-color);
-    }
-    
-    .faq-item.active .faq-toggle {
-      transform: rotate(180deg);
-    }
-  </style>
 </body>
 </html> 

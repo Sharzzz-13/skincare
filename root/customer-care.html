@@ -5,60 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Care - Skin Genius</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="../images/skin1.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Premium Header -->
-  <header>
-    <div class="container">
-      <h1>Skin Genius</h1>
-      <div class="header-buttons">
-        <button class="header-btn" onclick="window.location.href='index.html'">← Back</button>
-        <button class="header-btn" onclick="toggleMenu()">Menu</button>
+  <!-- ========================= -->
+  <!-- Minimal Sticky Header -->
+  <!-- ========================= -->
+  <header class="rhode-header">
+    <div class="header-container">
+      <span class="logo">skin genius</span>
+      <nav class="main-nav">
+        <a href="../root/index.html">home</a>
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+      </nav>
+      <div class="header-icons">
+        <a href="#" aria-label="Cart" class="cart-icon" id="open-cart">🛒</a>
+        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤</a>
       </div>
     </div>
   </header>
 
-  <!-- Customer Care Hero -->
-  <section class="hero" style="background-image: url('../images/skin3.jpg');">
-    <div class="hero-content">
-      <h2>Customer Care</h2>
-      <p>We're here to help you with any questions or concerns about your Skin Genius experience.</p>
+  <!-- ========================= -->
+  <!-- Simple Hero Section (no video) -->
+  <!-- ========================= -->
+  <section class="rhode-hero-simple">
+    <div class="rhode-hero-content">
+      <h1 class="hero-title">customer care</h1>
+      <p class="hero-desc">we're here for you. support, guidance, and answers—always.</p>
     </div>
   </section>
 
-  <!-- Customer Care Content -->
-  <section class="about-section">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="about-icon">📞</div>
+  <!-- ========================= -->
+  <!-- Customer Care Cards Section -->
+  <!-- ========================= -->
+  <section class="customer-care-section">
+    <div class="customer-care-container">
+      <div class="customer-care-grid">
+        <div class="customer-care-card">
+          <div class="customer-care-icon">📞</div>
           <h3>Contact Us</h3>
           <p>Our customer care team is available Monday to Friday, 9 AM - 6 PM IST. Reach out to us via email at skingenius@gmail.com or call us at +91 97315 87324.</p>
         </div>
-        <div class="about-card">
-          <div class="about-icon">💬</div>
+        <div class="customer-care-card">
+          <div class="customer-care-icon">💬</div>
           <h3>Live Chat</h3>
           <p>Get instant help with our live chat feature. Our skincare experts are ready to assist you with product recommendations and usage guidance.</p>
         </div>
-        <div class="about-card">
-          <div class="about-icon">📧</div>
+        <div class="customer-care-card">
+          <div class="customer-care-icon">📧</div>
           <h3>Email Support</h3>
           <p>Send us a detailed message and we'll get back to you within 24 hours. Include your order number for faster assistance.</p>
         </div>
-        <div class="about-card">
-          <div class="about-icon">🎯</div>
+        <div class="customer-care-card">
+          <div class="customer-care-icon">🎯</div>
           <h3>Product Guidance</h3>
           <p>Need help choosing the right products for your skin type? Our skincare specialists can create a personalized routine just for you.</p>
         </div>
-        <div class="about-card">
-          <div class="about-icon">🔧</div>
+        <div class="customer-care-card">
+          <div class="customer-care-icon">🔧</div>
           <h3>Technical Support</h3>
           <p>Having issues with your account, orders, or website experience? Our technical team is here to resolve any platform-related concerns.</p>
         </div>
-        <div class="about-card">
-          <div class="about-icon">💝</div>
+        <div class="customer-care-card">
+          <div class="customer-care-icon">💝</div>
           <h3>Loyalty Program</h3>
           <p>Join our loyalty program to earn points on every purchase, get exclusive offers, and enjoy VIP customer care services.</p>
         </div>
@@ -66,10 +77,12 @@
     </div>
   </section>
 
-  <!-- Contact Form Section -->
-  <section class="contact-section">
-    <div class="container">
-      <h2>Get in Touch</h2>
+  <!-- ========================= -->
+  <!-- Minimal Contact Form Section -->
+  <!-- ========================= -->
+  <section class="contact-section rhode-contact-form-section">
+    <div class="contact-form-container">
+      <h2>get in touch</h2>
       <p>Can't find what you're looking for? Send us a message and we'll help you right away.</p>
       <form class="contact-form">
         <div class="form-group">
@@ -91,82 +104,122 @@
         <div class="form-group">
           <textarea placeholder="How can we help you?" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn">Send Message</button>
+        <button type="submit" class="btn rhode-btn">send message</button>
       </form>
     </div>
   </section>
 
-  <!-- Luxury Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Skin Genius</h3>
-          <p>Elevating skincare to an art form, one radiant complexion at a time.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="products.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="how-to-use.html">How to Use</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="customer-care.html">Customer Care</a></li>
-            <li><a href="shipping-info.html">Shipping Info</a></li>
-            <li><a href="returns.html">Returns</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div class="social-links">
-            <a href="javascript:void(0)" onclick="showComingSoon('Instagram')" aria-label="Instagram">📷</a>
-            <a href="javascript:void(0)" onclick="showComingSoon('Facebook')" aria-label="Facebook">📘</a>
-            <a href="javascript:void(0)" onclick="showComingSoon('Twitter')" aria-label="Twitter">🐦</a>
-            <a href="javascript:void(0)" onclick="showComingSoon('YouTube')" aria-label="YouTube">📺</a>
-          </div>
-        </div>
+  <!-- ========================= -->
+  <!-- Minimal Footer -->
+  <!-- ========================= -->
+  <footer class="rhode-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+        <a href="../root/faq.html">faq</a>
+        <a href="../root/privacy-policy.html">privacy</a>
+        <a href="../root/terms-of-service.html">terms</a>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Skin Genius. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-link">instagram</a>
+        <a href="#" aria-label="Youtube" class="social-link">youtube</a>
+        <a href="#" aria-label="Tiktok" class="social-link">tiktok</a>
       </div>
+      <div id="coming-soon-popup" class="coming-soon-popup" style="display:none;">coming soon</div>
+      <div class="footer-copy">&copy; 2024 skin genius. all rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Premium Menu Overlay -->
-  <div class="main-menu" id="mainMenu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="how-to-use.html">How to Use</a></li>
-      <li><a href="results.html">Results</a></li>
-    </ul>
+  <!-- ========================= -->
+  <!-- Minimal Cart Drawer -->
+  <!-- ========================= -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <span class="cart-drawer-title">your bag</span>
+      <button id="close-cart" class="cart-drawer-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer-content">
+      <p class="cart-empty">your bag is empty.</p>
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-drawer-footer">
+      <button class="btn rhode-btn" style="width:100%">checkout</button>
+    </div>
   </div>
 
-  <!-- Premium Floating Elements -->
-  <button class="floating-cart-btn" onclick="window.location.href='cart.html'">🛒</button>
-  <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+  <!-- ========================= -->
+  <!-- Minimal Account Modal -->
+  <!-- ========================= -->
+  <div id="account-modal" class="account-modal">
+    <div class="account-modal-content">
+      <button class="account-modal-close" id="close-account" aria-label="Close">&times;</button>
+      <div class="account-modal-tabs">
+        <button id="tab-signin" class="account-tab active">sign in</button>
+        <button id="tab-signup" class="account-tab">sign up</button>
+      </div>
+      <form id="signin-form" class="account-form">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" class="btn rhode-btn">sign in</button>
+      </form>
+      <form id="signup-form" class="account-form" style="display:none;">
+        <input type="text" placeholder="Name" required autocomplete="name">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="new-password">
+        <button type="submit" class="btn rhode-btn">sign up</button>
+      </form>
+    </div>
+  </div>
 
+  <!-- ========================= -->
+  <!-- Scripts: Cart Drawer, Social Popup, Contact Form -->
+  <!-- ========================= -->
   <script src="../js/script.js"></script>
   <script>
+    // Cart drawer open/close logic
+    const openCartBtn = document.getElementById('open-cart');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartDrawer = document.getElementById('cart-drawer');
+    openCartBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      cartDrawer.classList.add('open');
+      document.body.classList.add('cart-open');
+    });
+    closeCartBtn.addEventListener('click', function() {
+      cartDrawer.classList.remove('open');
+      document.body.classList.remove('cart-open');
+    });
+    // Optional: close drawer when clicking outside
+    window.addEventListener('click', function(e) {
+      if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && e.target !== openCartBtn) {
+        cartDrawer.classList.remove('open');
+        document.body.classList.remove('cart-open');
+      }
+    });
+    // Social media coming soon popup at top
+    const socialLinks = document.querySelectorAll('.footer-social .social-link');
+    const comingSoonPopup = document.getElementById('coming-soon-popup');
+    socialLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        comingSoonPopup.style.display = 'block';
+        comingSoonPopup.style.opacity = '1';
+        setTimeout(() => {
+          comingSoonPopup.style.opacity = '0';
+        }, 1800);
+        setTimeout(() => {
+          comingSoonPopup.style.display = 'none';
+        }, 2000);
+      });
+    });
     // Contact form submission
     document.querySelector('.contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Thank you for your message! We\'ll get back to you within 24 hours.');
       this.reset();
     });
-
-    // Social media coming soon function
-    function showComingSoon(platform) {
-      alert(`${platform} profile coming soon! Follow us for updates on skincare tips and exclusive offers.`);
-    }
   </script>
 </body>
 </html> 

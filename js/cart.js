@@ -1,165 +1,140 @@
-// Global storage
-let productData = [];
+// Rhode-inspired, robust cart logic (minimal cart drawer)
 
-fetch("../data/product.json")
-  .then(res => res.json())
-  .then(data => {
-    productData = data; // Store data globally
-    displayCart();
-  });
+let productData = [
+  { id: "1", name: "Radiance Serum", price: 1299, image: "../images/1.jpg" },
+  { id: "2", name: "Hydra Cream", price: 1499, image: "../images/2.jpg" },
+  { id: "3", name: "Purity Cleanser", price: 1199, image: "../images/3.jpg" },
+  { id: "4", name: "Vitamin C Elixir", price: 1799, image: "../images/4.jpg" },
+  { id: "5", name: "Renewal Mask", price: 1599, image: "../images/5.jpg" },
+  { id: "6", name: "Soothe Balm", price: 999, image: "../images/6.jpg" },
+  { id: "7", name: "Clarity Toner", price: 1099, image: "../images/7.jpg" },
+  { id: "8", name: "Dew Drops", price: 1399, image: "../images/8.jpg" },
+  { id: "9", name: "Barrier Cream", price: 1299, image: "../images/9.jpg" },
+  { id: "10", name: "Night Repair", price: 1899, image: "../images/10.jpg" }
+];
 
-function displayCart() {
+function addToCart(productId) {
+  if (!productData.find(p => p.id === productId)) {
+    alert("Invalid product!");
+    return;
+  }
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const cartBox = document.getElementById("cart-items");
-  let subtotal = 0;
+  cart.push(productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCountBadge();
+  renderCartDrawer();
+  showAddedToBag();
+}
+window.addToCart = addToCart;
+
+function renderCartDrawer() {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const cartDrawer = document.querySelector(".cart-drawer-content");
+  if (!cartDrawer) return;
+  if (cart.length === 0) {
+    cartDrawer.innerHTML = '<p class="cart-empty">your bag is empty.</p>';
+    updateCartCountBadge();
+    return;
+  }
   const counts = {};
-
   cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
-
-  // Clear cart display
-  cartBox.innerHTML = '<h3>Your Cart Items</h3>';
-
+  let html = "";
+  let subtotal = 0;
   Object.entries(counts).forEach(([id, qty]) => {
     const item = productData.find(p => p.id === id);
+    if (!item) return;
     const itemTotal = item.price * qty;
     subtotal += itemTotal;
-    
-    cartBox.innerHTML += `
-      <div class="cart-item">
-        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
-        <div class="cart-item-details">
-          <h4>${item.name}</h4>
-          <p>₹${item.price} per item</p>
+    html += `
+      <div class="cart-item" style="display:flex;align-items:center;justify-content:space-between;padding:0.7em 0;border-bottom:1px solid #eee;">
+        <div style="flex:1;">
+          <div style="font-weight:500;">${item.name}</div>
+          <div style="font-size:0.95em;color:#b7a99a;">₹${item.price} each</div>
         </div>
-        <div class="cart-item-quantity">
-          <button class="qty-btn minus" onclick="updateCartQuantity('${id}', -1)">-</button>
-          <span class="qty-display" id="cart-qty-${id}">${qty}</span>
-          <button class="qty-btn plus" onclick="updateCartQuantity('${id}', 1)">+</button>
+        <div style="display:flex;align-items:center;gap:0.5em;">
+          <button onclick="updateCartQuantity('${id}', -1)" style="background:none;border:none;font-size:1.1em;">-</button>
+          <span>${qty}</span>
+          <button onclick="updateCartQuantity('${id}', 1)" style="background:none;border:none;font-size:1.1em;">+</button>
         </div>
-        <div class="cart-item-total" id="cart-total-${id}">
-          ₹${itemTotal}
-        </div>
-        <button class="remove-btn" onclick="removeFromCart('${id}')">🗑️</button>
-      </div>`;
+        <div style="width:70px;text-align:right;">₹${itemTotal}</div>
+        <button onclick="removeFromCart('${id}')" aria-label="Remove" style="background:none;border:none;font-size:1.2em;color:#7a5a3a;padding:0 0.3em;line-height:1;">&times;</button>
+      </div>
+    `;
   });
-
-  // Calculate charges
-  const packingCharge = 50;
-  const deliveryCharge = subtotal > 1000 ? 0 : 100; // Free delivery above ₹1000
-  const total = subtotal + packingCharge + deliveryCharge;
-
-  // Display cost breakdown
-  cartBox.innerHTML += `
-    <div class="cost-breakdown">
-      <div class="cost-row">
-        <span>Subtotal:</span>
-        <span id="subtotal-display">₹${subtotal}</span>
-      </div>
-      <div class="cost-row">
-        <span>Packing Charge:</span>
-        <span>₹${packingCharge}</span>
-      </div>
-      <div class="cost-row">
-        <span>Delivery Charge:</span>
-        <span id="delivery-display">${deliveryCharge === 0 ? 'FREE' : '₹' + deliveryCharge}</span>
-      </div>
-      <div class="cost-row total-row">
-        <span>Total Amount:</span>
-        <span id="total-display">₹${total}</span>
-      </div>
-    </div>
-  `;
-
-  // Update payment button with total
-  const paymentBtn = document.querySelector('#checkout-form button[type="submit"]');
-  if (paymentBtn) {
-    paymentBtn.textContent = `Pay ₹${total}`;
-  }
+  cartDrawer.innerHTML = html;
+  updateCartCountBadge();
 }
+window.renderCartDrawer = renderCartDrawer;
 
 function updateCartQuantity(productId, change) {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const currentQty = parseInt(document.getElementById(`cart-qty-${productId}`).textContent);
-  const newQty = Math.max(1, currentQty + change);
-  
-  // Update cart in localStorage
-  const newCart = [];
-  let added = 0;
-  
-  cart.forEach(id => {
-    if (id === productId && added < newQty) {
-      newCart.push(id);
-      added++;
-    } else if (id !== productId) {
-      newCart.push(id);
-    }
-  });
-  
+  const counts = {};
+  cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
+  const currentQty = counts[productId] || 0;
+  const newQty = currentQty + change;
+  let newCart = [];
+  if (newQty < 1) {
+    // Remove the product entirely
+    newCart = cart.filter(id => id !== productId);
+  } else {
+    Object.entries(counts).forEach(([id, qty]) => {
+      let q = id === productId ? newQty : qty;
+      for (let i = 0; i < q; i++) newCart.push(id);
+    });
+  }
   localStorage.setItem("cart", JSON.stringify(newCart));
-  
-  // Update display
-  document.getElementById(`cart-qty-${productId}`).textContent = newQty;
-  
-  // Recalculate totals
-  recalculateCart();
+  renderCartDrawer();
 }
+window.updateCartQuantity = updateCartQuantity;
 
 function removeFromCart(productId) {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const newCart = cart.filter(id => id !== productId);
   localStorage.setItem("cart", JSON.stringify(newCart));
-  
-  // Reload cart display
-  location.reload();
+  renderCartDrawer();
 }
+window.removeFromCart = removeFromCart;
 
-function recalculateCart() {
+function updateCartCountBadge() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const counts = {};
-  let subtotal = 0;
+  const badge = document.getElementById("cart-count-badge");
+  if (!badge) return;
+  const count = cart.length;
+  badge.textContent = count > 0 ? count : "";
+  badge.style.display = count > 0 ? "inline-block" : "none";
+}
+window.updateCartCountBadge = updateCartCountBadge;
 
-  cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
-
-  Object.entries(counts).forEach(([id, qty]) => {
-    const item = productData.find(p => p.id === id);
-    const itemTotal = item.price * qty;
-    subtotal += itemTotal;
-    
-    // Update individual item totals
-    const totalElement = document.getElementById(`cart-total-${id}`);
-    if (totalElement) {
-      totalElement.textContent = `₹${itemTotal}`;
-    }
-  });
-
-  // Calculate charges
-  const packingCharge = 50;
-  const deliveryCharge = subtotal > 1000 ? 0 : 100;
-  const total = subtotal + packingCharge + deliveryCharge;
-
-  // Update cost breakdown
-  document.getElementById('subtotal-display').textContent = `₹${subtotal}`;
-  document.getElementById('delivery-display').textContent = deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge}`;
-  document.getElementById('total-display').textContent = `₹${total}`;
-
-  // Update payment button
-  const paymentBtn = document.querySelector('#checkout-form button[type="submit"]');
-  if (paymentBtn) {
-    paymentBtn.textContent = `Pay ₹${total}`;
+// Minimal, high-end 'added to bag' notification
+function showAddedToBag(msg = 'added to bag') {
+  let n = document.getElementById('added-to-bag-msg');
+  if (!n) {
+    n = document.createElement('div');
+    n.id = 'added-to-bag-msg';
+    n.style.position = 'fixed';
+    n.style.top = '70px';
+    n.style.right = '32px';
+    n.style.background = '#f7f3ef';
+    n.style.color = '#7a5a3a';
+    n.style.fontFamily = 'Inter, sans-serif';
+    n.style.fontSize = '1.05em';
+    n.style.padding = '0.7em 1.3em';
+    n.style.borderRadius = '6px';
+    n.style.boxShadow = '0 2px 12px rgba(0,0,0,0.04)';
+    n.style.zIndex = '9999';
+    n.style.opacity = '0';
+    n.style.transition = 'opacity 0.2s';
+    document.body.appendChild(n);
   }
+  n.textContent = msg;
+  n.style.opacity = '1';
+  n.style.display = 'block';
+  setTimeout(() => { n.style.opacity = '0'; }, 1300);
+  setTimeout(() => { n.style.display = 'none'; }, 1500);
 }
 
-document.getElementById("checkout-form").addEventListener("submit", e => {
-  e.preventDefault();
-  
-  // Get selected payment method
-  const selectedPayment = document.querySelector('input[name="payment"]:checked');
-  if (!selectedPayment) {
-    alert("Please select a payment method!");
-    return;
-  }
-  
-  alert(`Order placed successfully! Payment method: ${selectedPayment.value}. Thank you for shopping with Skin Genius! ❤️`);
-  localStorage.removeItem("cart");
-  window.location.reload();
-});
+function getCartQuantity(productId) {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  return cart.filter(id => id === productId).length;
+}
+window.getCartQuantity = getCartQuantity;

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You – skin genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    .thankyou-container { max-width: 420px; margin: 7vh auto 0; background: #fff; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.07); padding: 2.5em 2em 2em; text-align: center; font-family: 'Inter', sans-serif; }
+    .thankyou-title { font-family: 'Playfair Display', serif; font-size: 2em; color: #7a5a3a; margin-bottom: 0.5em; }
+    .thankyou-banner { background: #f7f3ef; color: #7a5a3a; padding: 0.7em 1em; border-radius: 6px; margin-bottom: 1.5em; font-size: 1.1em; }
+    .order-summary { text-align: left; margin: 2em 0 1em; }
+    .order-summary ul { list-style: none; padding: 0; margin: 0; }
+    .order-summary li { margin-bottom: 0.7em; }
+    .order-summary .total { font-weight: 500; margin-top: 1em; }
+    .order-number { color: #b7a99a; font-size: 1.1em; margin-bottom: 1.2em; }
+    .thankyou-links { margin-top: 2em; }
+    .thankyou-links a { color: #7a5a3a; text-decoration: underline; margin: 0 0.7em; font-size: 1em; }
+  </style>
+</head>
+<body style="background:#f7f3ef;">
+  <div class="thankyou-container">
+    <div class="thankyou-title">thank you for your order</div>
+    <div class="thankyou-banner" id="thankyou-banner" style="display:none;">your order was placed successfully.</div>
+    <div class="order-number" id="order-number"></div>
+    <div class="order-summary" id="order-summary"></div>
+    <div class="thankyou-links">
+      <a href="index.html">back to home</a>|
+      <a href="#" id="view-history">view order history</a>
+    </div>
+    <div id="order-history-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(40,30,20,0.18);z-index:9999;align-items:center;justify-content:center;">
+      <div style="background:#fff;border-radius:10px;padding:2em 2.5em;min-width:320px;max-width:95vw;box-shadow:0 4px 32px rgba(0,0,0,0.08);position:relative;">
+        <button onclick="document.getElementById('order-history-modal').style.display='none'" style="position:absolute;top:1em;right:1em;background:none;border:none;font-size:1.5em;color:#7a5a3a;">&times;</button>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.2em;color:#7a5a3a;margin-bottom:1em;">order history</h2>
+        <div id="order-history-list"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Show banner if redirected from checkout
+    if (document.referrer && document.referrer.includes('index.html')) {
+      document.getElementById('thankyou-banner').style.display = 'block';
+    }
+    // Get order number from URL
+    function getOrderNumber() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('order');
+    }
+    // Load latest order from localStorage
+    function loadOrder(orderNum) {
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      if (!orders.length) return null;
+      if (orderNum) {
+        return orders.find(o => o.orderNumber == orderNum) || orders[orders.length-1];
+      }
+      return orders[orders.length-1];
+    }
+    // Render order summary
+    function renderOrder() {
+      const orderNum = getOrderNumber();
+      const order = loadOrder(orderNum);
+      if (!order) {
+        document.getElementById('order-number').textContent = '';
+        document.getElementById('order-summary').innerHTML = '<div style="color:#b7a99a;">No recent order found.</div>';
+        return;
+      }
+      document.getElementById('order-number').textContent = 'Order #' + order.orderNumber;
+      let html = '<ul>';
+      order.items.forEach(item => {
+        html += `<li>${item.name} × ${item.qty} <span style="float:right;">₹${item.total}</span></li>`;
+      });
+      html += `</ul><div class="total">Total: ₹${order.total}</div>`;
+      document.getElementById('order-summary').innerHTML = html;
+    }
+    // Order history modal
+    document.getElementById('view-history').onclick = function(e) {
+      e.preventDefault();
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      let html = '';
+      if (!orders.length) html = '<div style="color:#b7a99a;">No orders yet.</div>';
+      else {
+        html = '<ul>';
+        orders.slice().reverse().forEach(order => {
+          html += `<li style="margin-bottom:1em;"><b>#${order.orderNumber}</b> <span style="color:#b7a99a;">${order.date}</span><ul style="margin:0.5em 0 0 1.2em;">`;
+          order.items.forEach(item => {
+            html += `<li>${item.name} × ${item.qty} <span style=\"float:right;\">₹${item.total}</span></li>`;
+          });
+          html += `</ul><div class=\"total\">Total: ₹${order.total}</div></li>`;
+        });
+        html += '</ul>';
+      }
+      document.getElementById('order-history-list').innerHTML = html;
+      document.getElementById('order-history-modal').style.display = 'flex';
+    };
+    renderOrder();
+  </script>
+</body>
+</html> 

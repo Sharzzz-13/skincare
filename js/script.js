@@ -9,6 +9,44 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     loadUserFromStorage();
     setupScrollEffects();
+
+    // Minimal Account Modal logic
+    const openAccountBtn = document.getElementById('open-account');
+    const closeAccountBtn = document.getElementById('close-account');
+    const accountModal = document.getElementById('account-modal');
+    const tabSignin = document.getElementById('tab-signin');
+    const tabSignup = document.getElementById('tab-signup');
+    const signinForm = document.getElementById('signin-form');
+    const signupForm = document.getElementById('signup-form');
+    if (openAccountBtn && closeAccountBtn && accountModal && tabSignin && tabSignup && signinForm && signupForm) {
+      openAccountBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        accountModal.classList.add('open');
+      });
+      closeAccountBtn.addEventListener('click', function() {
+        accountModal.classList.remove('open');
+      });
+      window.addEventListener('click', function(e) {
+        if (accountModal.classList.contains('open') && !document.querySelector('.account-modal-content').contains(e.target) && e.target !== openAccountBtn) {
+          accountModal.classList.remove('open');
+        }
+      });
+      tabSignin.addEventListener('click', function() {
+        tabSignin.classList.add('active');
+        tabSignup.classList.remove('active');
+        signinForm.style.display = '';
+        signupForm.style.display = 'none';
+      });
+      tabSignup.addEventListener('click', function() {
+        tabSignup.classList.add('active');
+        tabSignin.classList.remove('active');
+        signupForm.style.display = '';
+        signinForm.style.display = 'none';
+      });
+      // Prevent form submission (demo only)
+      signinForm.addEventListener('submit', function(e) { e.preventDefault(); alert('Sign in (demo)'); });
+      signupForm.addEventListener('submit', function(e) { e.preventDefault(); alert('Sign up (demo)'); });
+    }
 });
 
 // Initialize the application
@@ -106,8 +144,8 @@ function setupScrollEffects() {
 function toggleMenu() {
     const menu = document.getElementById('mainMenu');
     if (menu) {
-        menu.classList.toggle('show');
-        document.body.style.overflow = menu.classList.contains('show') ? 'hidden' : '';
+        menu.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     }
 }
 
@@ -271,7 +309,7 @@ function handleNewsletterSubmit(e) {
 
 // Cart functionality
 function addToCart(productId, button) {
-    console.log('Adding to cart:', productId);
+    console.log('addToCart called for', productId);
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     cart.push(productId);
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -287,7 +325,9 @@ function addToCart(productId, button) {
     }, 1500);
 
     // Show notification
-    showNotification('Product added to cart successfully!', 'success');
+    showNotification('Added to bag', 'success');
+    renderCartDrawer();
+    updateCartCountBadge();
 }
 
 // Utility functions
@@ -304,7 +344,7 @@ function showNotification(message, type = 'info') {
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
         <div class="notification-content">
-            <span class="notification-message">${message}</span>
+            <span class="notification-message">${message.toLowerCase()}</span>
             <button class="notification-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
         </div>
     `;
@@ -314,14 +354,15 @@ function showNotification(message, type = 'info') {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? 'var(--sage)' : type === 'error' ? 'var(--rose-gold)' : 'var(--deep-pink)'};
+        background: #222;
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 10px;
         box-shadow: var(--shadow-strong);
         z-index: 10000;
         transform: translateX(400px);
-        transition: transform 0.3s ease-out;
+        opacity: 0;
+        transition: transform 0.3s cubic-bezier(.4,0,.2,1), opacity 0.4s cubic-bezier(.4,0,.2,1);
         max-width: 350px;
         backdrop-filter: blur(10px);
     `;
@@ -332,22 +373,24 @@ function showNotification(message, type = 'info') {
     // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
+        notification.style.opacity = '1';
     }, 100);
 
     // Auto remove after 5 seconds
     setTimeout(() => {
         if (notification.parentElement) {
             notification.style.transform = 'translateX(400px)';
+            notification.style.opacity = '0';
             setTimeout(() => {
                 if (notification.parentElement) {
                     notification.remove();
                 }
-            }, 300);
+            }, 400);
         }
     }, 5000);
 }
 
-// Enhanced product loading for featured products
+// Enhanced product loading for featured products - Rhode Style
 function loadFeaturedProducts() {
     fetch('../data/product.json')
         .then(res => res.json())
@@ -361,17 +404,18 @@ function loadFeaturedProducts() {
                 featuredProducts.forEach((product, index) => {
                     const card = document.createElement("div");
                     card.className = "product";
-                    let badge = '';
-                    if (index === 0) badge = '<div class="product-badge">Best Seller</div>';
                     
                     card.innerHTML = `
-                        ${badge}
                         <img src="${product.image}" alt="${product.name}">
-                        <h3>${product.name}</h3>
-                        <p>${product.description}</p>
-                        <p><strong>₹${product.price}</strong></p>
-                        <button class="add-to-cart-btn" onclick="addToCart('${product.id}', this)">Add to Cart</button>
-                        <a href="product.html?id=${product.id}" class="view-btn">View Details</a>
+                        <div class="product-content">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <strong>₹${product.price}</strong>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn" onclick="addToCart('${product.id}', this)">Add to Cart</button>
+                                <a href="product.html?id=${product.id}" class="view-btn">View Details</a>
+                            </div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -402,26 +446,72 @@ notificationStyles.textContent = `
         flex: 1;
         font-size: 0.9rem;
         font-weight: 500;
+        color: #7c4a1e;
     }
     
     .notification-close {
         background: none;
         border: none;
-        color: white;
-        font-size: 1.2rem;
+        color: #7c4a1e;
+        font-size: 1.1rem;
+        font-weight: 700;
         cursor: pointer;
         padding: 0;
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        transition: background-color 0.2s;
+        border-radius: 0;
+        transition: background-color 0.2s, color 0.2s;
+        box-shadow: none;
     }
     
     .notification-close:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(124, 74, 30, 0.08);
+        color: #5a3212;
     }
 `;
 document.head.appendChild(notificationStyles);
+
+// -----------------------------
+// Cart Drawer Logic
+// -----------------------------
+// Handles adding, increasing, decreasing products in cart, and rendering the cart drawer.
+
+// ... (cart logic code here) ...
+
+// -----------------------------
+// Cart Badge Logic
+// -----------------------------
+// Updates the cart icon badge to show the total quantity of items in the cart.
+
+// ... (cart badge code here) ...
+
+// -----------------------------
+// Inline Product Card Quantity Selector
+// -----------------------------
+// Handles the plus/minus and quantity display on product cards.
+
+// ... (inline quantity code here) ...
+
+// -----------------------------
+// Account Modal Logic
+// -----------------------------
+// Handles opening, closing, and toggling between sign in/sign up tabs in the account modal.
+
+// ... (account modal code here) ...
+
+// -----------------------------
+// Cart Drawer Open/Close Logic
+// -----------------------------
+// Handles opening and closing the cart drawer from the cart icon.
+
+// ... (cart drawer open/close code here) ...
+
+// -----------------------------
+// Social Popup Logic
+// -----------------------------
+// Handles the 'coming soon' popup for social media links in the footer.
+
+// ... (social popup code here) ...
