@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>skin genius</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Minimal Sticky Header -->
+  <header class="rhode-header">
+    <div class="header-container">
+      <span class="logo">skin genius</span>
+      <nav class="main-nav">
+        <a href="../root/index.html">home</a>
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+      </nav>
+      <div class="header-icons">
+        <a href="#" aria-label="Cart" class="cart-icon" id="open-cart">🛒<span class="cart-count-badge" id="cart-count-badge"></span></a>
+        <a href="#" aria-label="Account" class="account-icon" id="open-account">👤<span id="header-user-name" style="margin-left:0.7em;font-size:1em;font-weight:400;color:#b7a99a;letter-spacing:0.04em;text-transform:lowercase;"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Full-Bleed Hero Section with Vertical Video -->
+  <section class="rhode-hero-full">
+    <video autoplay muted loop playsinline class="hero-bg-video hero-bg-vertical">
+      <source src="../videos/vid5.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="rhode-hero-content">
+      <h1 class="hero-title">skin genius</h1>
+      <p class="hero-desc">intentional, high-performance essentials for every skin story.</p>
+      <a href="#" class="btn rhode-btn">shop now</a>
+    </div>
+  </section>
+
+  <!-- Tight Horizontal Product Carousel -->
+  <section class="rhode-carousel-section">
+    <div class="carousel-title">featured collection</div>
+    <div class="rhode-product-carousel" id="carousel-products"></div>
+  </section>
+
+  <!-- Editorial/Brand Statement Section with Background Image -->
+  <section class="rhode-editorial-block editorial-bg-img">
+    <div class="editorial-bg-overlay"></div>
+    <h2 class="editorial-title">one of everything<br>really good</h2>
+    <p class="editorial-desc">
+      at skin genius, our beauty philosophy is to make one of everything really good. to us, that means a collection of intentional, high-performance essentials you reach for on a daily basis. the ones you love, rely on, and always come back to.
+    </p>
+  </section>
+
+  <!-- Minimal Footer -->
+  <footer class="rhode-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="../root/products.html">shop</a>
+        <a href="../root/about.html">about</a>
+        <a href="../root/contact.html">contact</a>
+        <a href="../root/faq.html">faq</a>
+        <a href="../root/privacy-policy.html">privacy</a>
+        <a href="../root/terms-of-service.html">terms</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-link">instagram</a>
+        <a href="#" aria-label="Youtube" class="social-link">youtube</a>
+        <a href="#" aria-label="Tiktok" class="social-link">tiktok</a>
+      </div>
+      <div id="coming-soon-popup" class="coming-soon-popup" style="display:none;">coming soon</div>
+      <div class="footer-copy">&copy; 2024 skin genius. all rights reserved.</div>
+      <div class="footer-disclaimer">This website is a student/portfolio project. All products, brands, and content are for demonstration purposes only and are not for actual sale. No commercial activity is conducted through this site.</div>
+    </div>
+  </footer>
+
+  <!-- Minimal Cart Drawer -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <span class="cart-drawer-title">your bag</span>
+      <button id="close-cart" class="cart-drawer-close" aria-label="Close cart">&times;</button>
+        </div>
+    <div class="cart-drawer-content">
+      <p class="cart-empty">your bag is empty.</p>
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-drawer-footer">
+      <button class="btn rhode-btn" style="width:100%">checkout</button>
+        </div>
+      </div>
+
+  <!-- Minimal Account Modal -->
+  <div id="account-modal" class="account-modal">
+    <div class="account-modal-content">
+      <button class="account-modal-close" id="close-account" aria-label="Close">&times;</button>
+      <div class="account-modal-tabs">
+        <button id="tab-signin" class="account-tab active">sign in</button>
+        <button id="tab-signup" class="account-tab">sign up</button>
+      </div>
+      <form id="signin-form" class="account-form">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" class="btn rhode-btn">sign in</button>
+        <div style="margin:1em 0;text-align:center;">or</div>
+        <div id="google-signin-btn" style="display:none;"></div>
+      </form>
+      <form id="signup-form" class="account-form" style="display:none;">
+        <input type="text" placeholder="Name" required autocomplete="name">
+        <input type="email" placeholder="Email" required autocomplete="username">
+        <input type="password" placeholder="Password" required autocomplete="new-password">
+        <button type="submit" class="btn rhode-btn">sign up</button>
+      </form>
+      <div id="account-user-info" style="display:none;text-align:center;margin-top:1.5em;"></div>
+      <div id="order-history-modal" class="checkout-modal" style="display:none;">
+        <div class="checkout-modal-content">
+          <button class="checkout-modal-close" id="close-order-history" aria-label="Close">&times;</button>
+          <h2 class="checkout-title">your orders</h2>
+          <div id="order-history-content"></div>
+        </div>
+      </div>
+      <div id="address-book-modal" class="checkout-modal" style="display:none;">
+        <div class="checkout-modal-content">
+          <button class="checkout-modal-close" id="close-address-book" aria-label="Close">&times;</button>
+          <h2 class="checkout-title">your addresses</h2>
+          <div id="address-book-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimal Checkout Modal -->
+  <div id="checkout-modal" class="checkout-modal" style="display:none;">
+    <div class="checkout-modal-content">
+      <button class="checkout-modal-close" id="close-checkout" aria-label="Close">&times;</button>
+      <h2 class="checkout-title">order summary</h2>
+      <div id="checkout-summary"></div>
+      <button class="btn rhode-btn" id="place-order-btn" style="width:100%;margin-top:1em;">place order</button>
+    </div>
+  </div>
+
+  <script src="../js/script.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+function renderCarouselProducts() {
+  fetch('http://localhost:5000/api/products')
+    .then(res => res.json())
+    .then(products => {
+      window.productData = products;
+      const carousel = document.getElementById('carousel-products');
+      if (!carousel) return;
+      let html = '';
+      products.slice(0, 4).forEach(p => {
+        html += `
+          <div class="rhode-product-card" data-product-id="${p.id}">
+            <img src="../images/${p.id}.jpg" alt="${p.name}">
+            <div class="rhode-product-info">
+              <span class="rhode-product-name">${p.name.toLowerCase()}</span>
+              <span class="rhode-product-desc">${p.desc || ''}</span>
+              <span class="rhode-product-price">₹${p.price}</span>
+              <div class="product-qty-controls" id="qty-controls-${p.id}"></div>
+            </div>
+          </div>
+        `;
+      });
+      carousel.innerHTML = html;
+      if (window.renderProductQtyControls) renderProductQtyControls();
+    })
+    .catch(() => {
+      // Fallback: static demo products
+      const products = [
+        { id: "1", name: "Radiance Serum", price: 1299, desc: "brightens & evens tone" },
+        { id: "2", name: "Hydra Cream", price: 1499, desc: "deep hydration, non-greasy" },
+        { id: "3", name: "Purity Cleanser", price: 1199, desc: "gentle, non-stripping" },
+        { id: "4", name: "Vitamin C Elixir", price: 1799, desc: "antioxidant boost" }
+      ];
+      window.productData = products;
+      const carousel = document.getElementById('carousel-products');
+      if (!carousel) return;
+      let html = '';
+      products.forEach(p => {
+        html += `
+          <div class="rhode-product-card" data-product-id="${p.id}">
+            <img src="../images/${p.id}.jpg" alt="${p.name}">
+            <div class="rhode-product-info">
+              <span class="rhode-product-name">${p.name.toLowerCase()}</span>
+              <span class="rhode-product-desc">${p.desc || ''}</span>
+              <span class="rhode-product-price">₹${p.price}</span>
+              <div class="product-qty-controls" id="qty-controls-${p.id}"></div>
+            </div>
+          </div>
+        `;
+      });
+      carousel.innerHTML = html;
+      if (window.renderProductQtyControls) renderProductQtyControls();
+    });
+}
+document.addEventListener('DOMContentLoaded', renderCarouselProducts);
+  </script>
+</body>
+</html>
